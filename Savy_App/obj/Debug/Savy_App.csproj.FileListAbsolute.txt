@@ -1,0 +1,17 @@
+C:\Users\Rachel Martinez\Google Drive\Mel\Savy_App\Savy_App\bin\Debug\Savy_App.exe.config
+D:\OfflineInventory-system-repo\Savy_App\bin\Debug\Savy_App.exe.config
+D:\OfflineInventory-system-repo\Savy_App\bin\Debug\Savy_App.exe
+D:\OfflineInventory-system-repo\Savy_App\bin\Debug\Savy_App.pdb
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.csprojResolveAssemblyReference.cache
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Brand_List.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Dashboard.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.MDI.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Properties.Resources.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.csproj.GenerateResource.Cache
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.exe
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.pdb
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Brand_Details.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Product_List.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Product_Detail.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Supplier_Detail.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Supplier_List.resources
