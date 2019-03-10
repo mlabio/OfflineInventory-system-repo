@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lbl_brand_id = new System.Windows.Forms.Label();
-            this.btn_edit = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Transaction = new System.Windows.Forms.Label();
             this.Name_ = new System.Windows.Forms.Label();
@@ -43,8 +42,10 @@
             this.lbl_brand_description = new System.Windows.Forms.Label();
             this.relationtocontact = new System.Windows.Forms.Label();
             this.dgv_patientchart = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -63,24 +64,6 @@
             this.lbl_brand_id.TabIndex = 398;
             this.lbl_brand_id.Text = "Brand\'s ID :";
             this.lbl_brand_id.Visible = false;
-            // 
-            // btn_edit
-            // 
-            this.btn_edit.BackColor = System.Drawing.Color.Maroon;
-            this.btn_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_edit.FlatAppearance.BorderSize = 0;
-            this.btn_edit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
-            this.btn_edit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
-            this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_edit.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Location = new System.Drawing.Point(794, 760);
-            this.btn_edit.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(393, 48);
-            this.btn_edit.TabIndex = 403;
-            this.btn_edit.Text = "Edit";
-            this.btn_edit.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
@@ -240,25 +223,6 @@
             this.dgv_patientchart.Size = new System.Drawing.Size(1174, 502);
             this.dgv_patientchart.TabIndex = 402;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Maroon;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(393, 760);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(393, 48);
-            this.button1.TabIndex = 411;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.IndianRed;
@@ -274,6 +238,61 @@
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.Maroon;
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_delete.FlatAppearance.BorderSize = 0;
+            this.btn_delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btn_delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(798, 759);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(390, 48);
+            this.btn_delete.TabIndex = 426;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.BackColor = System.Drawing.Color.Orange;
+            this.btn_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_edit.FlatAppearance.BorderSize = 0;
+            this.btn_edit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold;
+            this.btn_edit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
+            this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_edit.ForeColor = System.Drawing.Color.White;
+            this.btn_edit.Location = new System.Drawing.Point(406, 759);
+            this.btn_edit.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(390, 48);
+            this.btn_edit.TabIndex = 424;
+            this.btn_edit.Text = "Edit";
+            this.btn_edit.UseVisualStyleBackColor = false;
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_add.FlatAppearance.BorderSize = 0;
+            this.btn_add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
+            this.btn_add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.ForeColor = System.Drawing.Color.White;
+            this.btn_add.Location = new System.Drawing.Point(14, 759);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(390, 48);
+            this.btn_add.TabIndex = 425;
+            this.btn_add.Text = "Add";
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
             // Brand_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -281,9 +300,10 @@
             this.BackgroundImage = global::Savy_App.Properties.Resources._1200x820;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1200, 820);
-            this.Controls.Add(this.btn_close);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_edit);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.btn_close);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.Name_);
             this.Controls.Add(this.panel1);
@@ -308,7 +328,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_brand_id;
-        public System.Windows.Forms.Button btn_edit;
         public System.Windows.Forms.Panel panel6;
         public System.Windows.Forms.Label Transaction;
         public System.Windows.Forms.Label Name_;
@@ -320,10 +339,12 @@
         public System.Windows.Forms.Label lbl_brand_description;
         public System.Windows.Forms.Label relationtocontact;
         public System.Windows.Forms.DataGridView dgv_patientchart;
-        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lbl_brand_supplier;
         private System.Windows.Forms.Button btn_close;
+        public System.Windows.Forms.Button btn_delete;
+        public System.Windows.Forms.Button btn_edit;
+        public System.Windows.Forms.Button btn_add;
 
     }
 }

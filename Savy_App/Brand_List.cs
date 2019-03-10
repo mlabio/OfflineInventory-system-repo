@@ -16,18 +16,13 @@ namespace Savy_App
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_add_Click(object sender, EventArgs e)
         {
             Brand_Details h = new Brand_Details();
             h.MdiParent = MdiParent;
@@ -36,6 +31,5 @@ namespace Savy_App
             this.Close();
         }
 
-        
     }
 }

@@ -55,7 +55,7 @@
             this.btn_close.Location = new System.Drawing.Point(757, 3);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(35, 33);
-            this.btn_close.TabIndex = 422;
+            this.btn_close.TabIndex = 7;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
@@ -83,7 +83,6 @@
             // 
             // txt_description
             // 
-            this.txt_description.Enabled = false;
             this.txt_description.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_description.ForeColor = System.Drawing.Color.Black;
             this.txt_description.Location = new System.Drawing.Point(155, 94);
@@ -91,7 +90,7 @@
             this.txt_description.Multiline = true;
             this.txt_description.Name = "txt_description";
             this.txt_description.Size = new System.Drawing.Size(507, 196);
-            this.txt_description.TabIndex = 313;
+            this.txt_description.TabIndex = 3;
             // 
             // txt_name
             // 
@@ -102,7 +101,7 @@
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(507, 27);
-            this.txt_name.TabIndex = 312;
+            this.txt_name.TabIndex = 2;
             // 
             // label9
             // 
@@ -137,7 +136,7 @@
             this.rb_inactive.Margin = new System.Windows.Forms.Padding(4);
             this.rb_inactive.Name = "rb_inactive";
             this.rb_inactive.Size = new System.Drawing.Size(79, 20);
-            this.rb_inactive.TabIndex = 13;
+            this.rb_inactive.TabIndex = 5;
             this.rb_inactive.Text = "Inactive";
             this.rb_inactive.UseVisualStyleBackColor = true;
             // 
@@ -151,7 +150,7 @@
             this.rb_active.Margin = new System.Windows.Forms.Padding(4);
             this.rb_active.Name = "rb_active";
             this.rb_active.Size = new System.Drawing.Size(68, 20);
-            this.rb_active.TabIndex = 12;
+            this.rb_active.TabIndex = 4;
             this.rb_active.TabStop = true;
             this.rb_active.Text = "Active";
             this.rb_active.UseVisualStyleBackColor = true;
@@ -191,7 +190,7 @@
             this.dtp_date.MaxDate = new System.DateTime(2025, 3, 10, 0, 0, 0, 0);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(178, 27);
-            this.dtp_date.TabIndex = 26;
+            this.dtp_date.TabIndex = 1;
             this.dtp_date.Value = new System.DateTime(2019, 3, 10, 12, 41, 42, 0);
             // 
             // label5
@@ -220,7 +219,7 @@
             this.btn_save.Margin = new System.Windows.Forms.Padding(4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(702, 48);
-            this.btn_save.TabIndex = 419;
+            this.btn_save.TabIndex = 6;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);

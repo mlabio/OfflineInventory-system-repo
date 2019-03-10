@@ -52,7 +52,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmb_supplier = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +78,7 @@
             this.rb_inactive.Margin = new System.Windows.Forms.Padding(4);
             this.rb_inactive.Name = "rb_inactive";
             this.rb_inactive.Size = new System.Drawing.Size(47, 20);
-            this.rb_inactive.TabIndex = 13;
+            this.rb_inactive.TabIndex = 9;
             this.rb_inactive.Text = "No";
             this.rb_inactive.UseVisualStyleBackColor = true;
             // 
@@ -92,7 +92,7 @@
             this.rb_active.Margin = new System.Windows.Forms.Padding(4);
             this.rb_active.Name = "rb_active";
             this.rb_active.Size = new System.Drawing.Size(49, 20);
-            this.rb_active.TabIndex = 12;
+            this.rb_active.TabIndex = 8;
             this.rb_active.TabStop = true;
             this.rb_active.Text = "Yes";
             this.rb_active.UseVisualStyleBackColor = true;
@@ -143,7 +143,7 @@
             this.btn_close.Location = new System.Drawing.Point(756, 3);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(35, 33);
-            this.btn_close.TabIndex = 426;
+            this.btn_close.TabIndex = 20;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
@@ -157,7 +157,7 @@
             this.txt_description.Multiline = true;
             this.txt_description.Name = "txt_description";
             this.txt_description.Size = new System.Drawing.Size(507, 61);
-            this.txt_description.TabIndex = 27;
+            this.txt_description.TabIndex = 5;
             // 
             // label3
             // 
@@ -181,7 +181,7 @@
             this.cmb_brand.Location = new System.Drawing.Point(160, 231);
             this.cmb_brand.Name = "cmb_brand";
             this.cmb_brand.Size = new System.Drawing.Size(507, 28);
-            this.cmb_brand.TabIndex = 25;
+            this.cmb_brand.TabIndex = 6;
             // 
             // label1
             // 
@@ -206,13 +206,13 @@
             this.dtp_date.MaxDate = new System.DateTime(2025, 3, 19, 0, 0, 0, 0);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(178, 27);
-            this.dtp_date.TabIndex = 26;
+            this.dtp_date.TabIndex = 0;
             this.dtp_date.Value = new System.DateTime(2019, 3, 10, 0, 0, 0, 0);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cmb_supplier);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txt_qty);
@@ -256,7 +256,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(178, 37);
-            this.button1.TabIndex = 425;
+            this.button1.TabIndex = 10;
             this.button1.Text = "Select Image";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -281,7 +281,7 @@
             this.txt_qty.Multiline = true;
             this.txt_qty.Name = "txt_qty";
             this.txt_qty.Size = new System.Drawing.Size(507, 27);
-            this.txt_qty.TabIndex = 320;
+            this.txt_qty.TabIndex = 4;
             // 
             // txt_price
             // 
@@ -292,7 +292,7 @@
             this.txt_price.Multiline = true;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(507, 27);
-            this.txt_price.TabIndex = 319;
+            this.txt_price.TabIndex = 3;
             // 
             // txt_sku
             // 
@@ -303,7 +303,7 @@
             this.txt_sku.Multiline = true;
             this.txt_sku.Name = "txt_sku";
             this.txt_sku.Size = new System.Drawing.Size(507, 27);
-            this.txt_sku.TabIndex = 318;
+            this.txt_sku.TabIndex = 2;
             // 
             // txt_name
             // 
@@ -314,7 +314,7 @@
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(507, 27);
-            this.txt_name.TabIndex = 317;
+            this.txt_name.TabIndex = 1;
             // 
             // label7
             // 
@@ -378,21 +378,22 @@
             this.btn_save.Margin = new System.Windows.Forms.Padding(4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(702, 35);
-            this.btn_save.TabIndex = 424;
+            this.btn_save.TabIndex = 11;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // comboBox1
+            // cmb_supplier
             // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(160, 263);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(507, 28);
-            this.comboBox1.TabIndex = 426;
+            this.cmb_supplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cmb_supplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_supplier.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_supplier.ForeColor = System.Drawing.Color.Black;
+            this.cmb_supplier.FormattingEnabled = true;
+            this.cmb_supplier.Location = new System.Drawing.Point(160, 263);
+            this.cmb_supplier.Name = "cmb_supplier";
+            this.cmb_supplier.Size = new System.Drawing.Size(507, 28);
+            this.cmb_supplier.TabIndex = 7;
             // 
             // Product_Detail
             // 
@@ -443,6 +444,6 @@
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmb_supplier;
     }
 }
