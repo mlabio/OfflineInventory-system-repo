@@ -30,22 +30,19 @@
         {
             this.btn_close = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tb_brand_description = new System.Windows.Forms.TextBox();
-            this.tb_brand_name = new System.Windows.Forms.TextBox();
+            this.txt_description = new System.Windows.Forms.TextBox();
+            this.txt_name = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel_status = new System.Windows.Forms.Panel();
             this.rb_inactive = new System.Windows.Forms.RadioButton();
             this.rb_active = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtp_date_now = new System.Windows.Forms.DateTimePicker();
+            this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmb_Supplies = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panel_status.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_close
@@ -66,15 +63,13 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.cmb_Supplies);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tb_brand_description);
-            this.groupBox2.Controls.Add(this.tb_brand_name);
+            this.groupBox2.Controls.Add(this.txt_description);
+            this.groupBox2.Controls.Add(this.txt_name);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.panel4);
+            this.groupBox2.Controls.Add(this.panel_status);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.dtp_date_now);
+            this.groupBox2.Controls.Add(this.dtp_date);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
@@ -86,28 +81,28 @@
             this.groupBox2.TabIndex = 420;
             this.groupBox2.TabStop = false;
             // 
-            // tb_brand_description
+            // txt_description
             // 
-            this.tb_brand_description.Enabled = false;
-            this.tb_brand_description.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_brand_description.ForeColor = System.Drawing.Color.Black;
-            this.tb_brand_description.Location = new System.Drawing.Point(155, 94);
-            this.tb_brand_description.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_brand_description.Multiline = true;
-            this.tb_brand_description.Name = "tb_brand_description";
-            this.tb_brand_description.Size = new System.Drawing.Size(507, 161);
-            this.tb_brand_description.TabIndex = 313;
+            this.txt_description.Enabled = false;
+            this.txt_description.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_description.ForeColor = System.Drawing.Color.Black;
+            this.txt_description.Location = new System.Drawing.Point(155, 94);
+            this.txt_description.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_description.Multiline = true;
+            this.txt_description.Name = "txt_description";
+            this.txt_description.Size = new System.Drawing.Size(507, 196);
+            this.txt_description.TabIndex = 313;
             // 
-            // tb_brand_name
+            // txt_name
             // 
-            this.tb_brand_name.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_brand_name.ForeColor = System.Drawing.Color.Black;
-            this.tb_brand_name.Location = new System.Drawing.Point(155, 60);
-            this.tb_brand_name.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_brand_name.Multiline = true;
-            this.tb_brand_name.Name = "tb_brand_name";
-            this.tb_brand_name.Size = new System.Drawing.Size(507, 27);
-            this.tb_brand_name.TabIndex = 312;
+            this.txt_name.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_name.ForeColor = System.Drawing.Color.Black;
+            this.txt_name.Location = new System.Drawing.Point(155, 60);
+            this.txt_name.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_name.Multiline = true;
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(507, 27);
+            this.txt_name.TabIndex = 312;
             // 
             // label9
             // 
@@ -121,17 +116,17 @@
             this.label9.TabIndex = 311;
             this.label9.Text = "Brand Name :";
             // 
-            // panel4
+            // panel_status
             // 
-            this.panel4.Controls.Add(this.rb_inactive);
-            this.panel4.Controls.Add(this.rb_active);
-            this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(155, 298);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(178, 37);
-            this.panel4.TabIndex = 309;
-            this.panel4.TabStop = true;
+            this.panel_status.Controls.Add(this.rb_inactive);
+            this.panel_status.Controls.Add(this.rb_active);
+            this.panel_status.ForeColor = System.Drawing.Color.Black;
+            this.panel_status.Location = new System.Drawing.Point(155, 298);
+            this.panel_status.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_status.Name = "panel_status";
+            this.panel_status.Size = new System.Drawing.Size(178, 37);
+            this.panel_status.TabIndex = 309;
+            this.panel_status.TabStop = true;
             // 
             // rb_inactive
             // 
@@ -185,19 +180,19 @@
             this.label8.TabIndex = 310;
             this.label8.Text = "Status :";
             // 
-            // dtp_date_now
+            // dtp_date
             // 
-            this.dtp_date_now.CustomFormat = " MM/dd/yyyy";
-            this.dtp_date_now.Enabled = false;
-            this.dtp_date_now.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_date_now.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_date_now.Location = new System.Drawing.Point(155, 25);
-            this.dtp_date_now.Margin = new System.Windows.Forms.Padding(4);
-            this.dtp_date_now.MaxDate = new System.DateTime(2017, 3, 19, 0, 0, 0, 0);
-            this.dtp_date_now.Name = "dtp_date_now";
-            this.dtp_date_now.Size = new System.Drawing.Size(178, 27);
-            this.dtp_date_now.TabIndex = 26;
-            this.dtp_date_now.Value = new System.DateTime(2017, 3, 19, 0, 0, 0, 0);
+            this.dtp_date.CustomFormat = " MM/dd/yyyy";
+            this.dtp_date.Enabled = false;
+            this.dtp_date.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_date.Location = new System.Drawing.Point(155, 25);
+            this.dtp_date.Margin = new System.Windows.Forms.Padding(4);
+            this.dtp_date.MaxDate = new System.DateTime(2025, 3, 10, 0, 0, 0, 0);
+            this.dtp_date.Name = "dtp_date";
+            this.dtp_date.Size = new System.Drawing.Size(178, 27);
+            this.dtp_date.TabIndex = 26;
+            this.dtp_date.Value = new System.DateTime(2019, 3, 10, 12, 41, 42, 0);
             // 
             // label5
             // 
@@ -224,52 +219,11 @@
             this.btn_save.Location = new System.Drawing.Point(39, 407);
             this.btn_save.Margin = new System.Windows.Forms.Padding(4);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(347, 48);
+            this.btn_save.Size = new System.Drawing.Size(702, 48);
             this.btn_save.TabIndex = 419;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = false;
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackColor = System.Drawing.Color.Maroon;
-            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_delete.FlatAppearance.BorderSize = 0;
-            this.btn_delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
-            this.btn_delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
-            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(394, 407);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(347, 48);
-            this.btn_delete.TabIndex = 418;
-            this.btn_delete.Text = "Delete";
-            this.btn_delete.UseVisualStyleBackColor = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(63, 266);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 20);
-            this.label6.TabIndex = 322;
-            this.label6.Text = "Supplier :";
-            // 
-            // cmb_Supplies
-            // 
-            this.cmb_Supplies.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cmb_Supplies.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmb_Supplies.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_Supplies.ForeColor = System.Drawing.Color.Black;
-            this.cmb_Supplies.FormattingEnabled = true;
-            this.cmb_Supplies.Location = new System.Drawing.Point(155, 262);
-            this.cmb_Supplies.Name = "cmb_Supplies";
-            this.cmb_Supplies.Size = new System.Drawing.Size(507, 28);
-            this.cmb_Supplies.TabIndex = 324;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // Brand_Details
             // 
@@ -281,15 +235,14 @@
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.btn_delete);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Brand_Details";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Brand_Details";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel_status.ResumeLayout(false);
+            this.panel_status.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -298,19 +251,16 @@
 
         private System.Windows.Forms.Button btn_close;
         public System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.DateTimePicker dtp_date_now;
+        public System.Windows.Forms.DateTimePicker dtp_date;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Button btn_save;
-        public System.Windows.Forms.Button btn_delete;
-        public System.Windows.Forms.TextBox tb_brand_description;
-        public System.Windows.Forms.TextBox tb_brand_name;
+        public System.Windows.Forms.TextBox txt_description;
+        public System.Windows.Forms.TextBox txt_name;
         public System.Windows.Forms.Label label9;
-        public System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.Panel panel_status;
         public System.Windows.Forms.RadioButton rb_inactive;
         public System.Windows.Forms.RadioButton rb_active;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label8;
-        public System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cmb_Supplies;
     }
 }

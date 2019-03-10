@@ -36,6 +36,10 @@
             this.lbl_supplier_address = new System.Windows.Forms.Label();
             this.relationtocontact = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lbl_supplier_name = new System.Windows.Forms.Label();
             this.Name_ = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,6 +49,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btn_add = new System.Windows.Forms.Button();
             this.dgv_patientchart = new System.Windows.Forms.DataGridView();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -71,7 +76,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(184, 67);
+            this.label1.Location = new System.Drawing.Point(179, 70);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 22);
@@ -83,7 +88,7 @@
             this.lbl_supplier_phone.AutoSize = true;
             this.lbl_supplier_phone.BackColor = System.Drawing.Color.Transparent;
             this.lbl_supplier_phone.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_supplier_phone.Location = new System.Drawing.Point(17, 66);
+            this.lbl_supplier_phone.Location = new System.Drawing.Point(20, 70);
             this.lbl_supplier_phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_supplier_phone.Name = "lbl_supplier_phone";
             this.lbl_supplier_phone.Size = new System.Drawing.Size(86, 22);
@@ -95,7 +100,7 @@
             this.contactperson.AutoSize = true;
             this.contactperson.BackColor = System.Drawing.Color.Transparent;
             this.contactperson.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactperson.Location = new System.Drawing.Point(184, 8);
+            this.contactperson.Location = new System.Drawing.Point(179, 38);
             this.contactperson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.contactperson.Name = "contactperson";
             this.contactperson.Size = new System.Drawing.Size(68, 22);
@@ -107,7 +112,7 @@
             this.lbl_supplier_status.AutoSize = true;
             this.lbl_supplier_status.BackColor = System.Drawing.Color.Transparent;
             this.lbl_supplier_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_supplier_status.Location = new System.Drawing.Point(17, 7);
+            this.lbl_supplier_status.Location = new System.Drawing.Point(17, 130);
             this.lbl_supplier_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_supplier_status.Name = "lbl_supplier_status";
             this.lbl_supplier_status.Size = new System.Drawing.Size(68, 22);
@@ -119,7 +124,7 @@
             this.lbl_supplier_address.AutoSize = true;
             this.lbl_supplier_address.BackColor = System.Drawing.Color.Transparent;
             this.lbl_supplier_address.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_supplier_address.Location = new System.Drawing.Point(17, 37);
+            this.lbl_supplier_address.Location = new System.Drawing.Point(20, 6);
             this.lbl_supplier_address.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_supplier_address.Name = "lbl_supplier_address";
             this.lbl_supplier_address.Size = new System.Drawing.Size(86, 22);
@@ -131,7 +136,7 @@
             this.relationtocontact.AutoSize = true;
             this.relationtocontact.BackColor = System.Drawing.Color.Transparent;
             this.relationtocontact.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.relationtocontact.Location = new System.Drawing.Point(184, 37);
+            this.relationtocontact.Location = new System.Drawing.Point(179, 4);
             this.relationtocontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.relationtocontact.Name = "relationtocontact";
             this.relationtocontact.Size = new System.Drawing.Size(68, 22);
@@ -142,6 +147,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.lbl_supplier_phone);
             this.panel4.Controls.Add(this.contactperson);
@@ -151,8 +160,56 @@
             this.panel4.Location = new System.Drawing.Point(13, 97);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1174, 100);
+            this.panel4.Size = new System.Drawing.Size(1174, 164);
             this.panel4.TabIndex = 419;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(179, 130);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 22);
+            this.label5.TabIndex = 381;
+            this.label5.Text = "Section";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(179, 99);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 22);
+            this.label4.TabIndex = 380;
+            this.label4.Text = "Section";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 99);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(145, 22);
+            this.label3.TabIndex = 379;
+            this.label3.Text = "Contact Person  :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(20, 38);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 22);
+            this.label2.TabIndex = 378;
+            this.label2.Text = "Description :";
             // 
             // lbl_supplier_name
             // 
@@ -217,18 +274,18 @@
             // 
             // btn_edit
             // 
-            this.btn_edit.BackColor = System.Drawing.Color.Maroon;
+            this.btn_edit.BackColor = System.Drawing.Color.Orange;
             this.btn_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_edit.FlatAppearance.BorderSize = 0;
-            this.btn_edit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
-            this.btn_edit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btn_edit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold;
+            this.btn_edit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_edit.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Location = new System.Drawing.Point(794, 760);
+            this.btn_edit.Location = new System.Drawing.Point(405, 759);
             this.btn_edit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(393, 48);
+            this.btn_edit.Size = new System.Drawing.Size(390, 48);
             this.btn_edit.TabIndex = 418;
             this.btn_edit.Text = "Edit";
             this.btn_edit.UseVisualStyleBackColor = false;
@@ -237,7 +294,7 @@
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.panel6.Controls.Add(this.Transaction);
-            this.panel6.Location = new System.Drawing.Point(13, 211);
+            this.panel6.Location = new System.Drawing.Point(13, 269);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1174, 41);
@@ -245,18 +302,18 @@
             // 
             // btn_add
             // 
-            this.btn_add.BackColor = System.Drawing.Color.Maroon;
+            this.btn_add.BackColor = System.Drawing.Color.ForestGreen;
             this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_add.FlatAppearance.BorderSize = 0;
-            this.btn_add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
-            this.btn_add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btn_add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
+            this.btn_add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(393, 760);
+            this.btn_add.Location = new System.Drawing.Point(13, 759);
             this.btn_add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(393, 48);
+            this.btn_add.Size = new System.Drawing.Size(390, 48);
             this.btn_add.TabIndex = 421;
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = false;
@@ -266,13 +323,31 @@
             // 
             this.dgv_patientchart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_patientchart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_patientchart.Location = new System.Drawing.Point(13, 249);
+            this.dgv_patientchart.Location = new System.Drawing.Point(13, 310);
             this.dgv_patientchart.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_patientchart.Name = "dgv_patientchart";
             this.dgv_patientchart.ReadOnly = true;
             this.dgv_patientchart.RowHeadersVisible = false;
-            this.dgv_patientchart.Size = new System.Drawing.Size(1174, 502);
+            this.dgv_patientchart.Size = new System.Drawing.Size(1174, 441);
             this.dgv_patientchart.TabIndex = 417;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.Maroon;
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_delete.FlatAppearance.BorderSize = 0;
+            this.btn_delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.btn_delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(797, 759);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(390, 48);
+            this.btn_delete.TabIndex = 423;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.UseVisualStyleBackColor = false;
             // 
             // Supplier_List
             // 
@@ -281,6 +356,7 @@
             this.BackgroundImage = global::Savy_App.Properties.Resources._1200x820;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1200, 820);
+            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.Name_);
@@ -324,5 +400,10 @@
         public System.Windows.Forms.Panel panel6;
         public System.Windows.Forms.Button btn_add;
         public System.Windows.Forms.DataGridView dgv_patientchart;
+        public System.Windows.Forms.Button btn_delete;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label2;
     }
 }
