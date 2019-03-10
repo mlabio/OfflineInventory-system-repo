@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,9 +56,9 @@ namespace Savy_App
             int supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
             dt = getBrands(cmb_brand.Text);
             int brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
-
+            
             String insert_statement =
-                "INSERT INTO Products(productName, productDescription, productStatus, productSKU, productPrice, productQty, brandId, supplierId, CREATE_DATE, LAST_UPDATE_DATE)"
+                "INSERT INTO Products(productName, productDescription, productStatus, productSKU, productPrice, productQty, productImage, brandId, supplierId, CREATE_DATE, LAST_UPDATE_DATE)"
                 + " VALUES('"
                 + txt_name.Text + "','"
                 + txt_description.Text + "',"
@@ -65,6 +66,7 @@ namespace Savy_App
                 + txt_sku.Text + "','"
                 + txt_price.Text + "',"
                 + Convert.ToInt32(txt_qty.Text) + ","
+                + ImageToBase64(product_image.Image,System.Drawing.Imaging.ImageFormat.Png) + ","
                 + supplierId + ","
                 + brandId + ",'"
                 + DateTime.Now.ToShortDateString() + "','"
@@ -108,10 +110,38 @@ namespace Savy_App
             string conn_string = "";
 
             //Populate supplier
-            conn_string = text == "All" ? "SELECT * FROM Brands" + " WHERE brandId = 1" : "SELECT * FROM Brands" + " WHERE brandStatus = 1 AND brandName = '" + text + "'";
+            conn_string = text == "All" ? "SELECT * FROM Brands" + " WHERE brandStatus = 1" : "SELECT * FROM Brands" + " WHERE brandStatus = 1 AND brandName = '" + text + "'";
             dt = Record.SELECT_STATEMENT(conn_string);
             return dt;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void select_image_btn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                product_image.Image = new Bitmap(opnfd.FileName);
+            }
+            
+        }
+        public string ImageToBase64(Image image, System.Drawing.Imaging.ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Convert Image to byte[]
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
+
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
     }
 }

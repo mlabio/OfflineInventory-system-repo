@@ -41,7 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.product_image = new System.Windows.Forms.PictureBox();
+            this.cmb_supplier = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_qty = new System.Windows.Forms.TextBox();
             this.txt_price = new System.Windows.Forms.TextBox();
@@ -52,9 +53,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
-            this.cmb_supplier = new System.Windows.Forms.ComboBox();
+            this.select_image_btn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.product_image)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -212,8 +214,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.select_image_btn);
+            this.groupBox2.Controls.Add(this.product_image);
             this.groupBox2.Controls.Add(this.cmb_supplier);
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txt_qty);
             this.groupBox2.Controls.Add(this.txt_price);
@@ -242,23 +245,25 @@
             this.groupBox2.TabIndex = 425;
             this.groupBox2.TabStop = false;
             // 
-            // button1
+            // product_image
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(160, 333);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 37);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Select Image";
-            this.button1.UseVisualStyleBackColor = false;
+            this.product_image.Location = new System.Drawing.Point(345, 297);
+            this.product_image.Name = "product_image";
+            this.product_image.Size = new System.Drawing.Size(100, 50);
+            this.product_image.TabIndex = 323;
+            this.product_image.TabStop = false;
+            // 
+            // cmb_supplier
+            // 
+            this.cmb_supplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cmb_supplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_supplier.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_supplier.ForeColor = System.Drawing.Color.Black;
+            this.cmb_supplier.FormattingEnabled = true;
+            this.cmb_supplier.Location = new System.Drawing.Point(160, 263);
+            this.cmb_supplier.Name = "cmb_supplier";
+            this.cmb_supplier.Size = new System.Drawing.Size(507, 28);
+            this.cmb_supplier.TabIndex = 7;
             // 
             // label10
             // 
@@ -383,17 +388,24 @@
             this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // cmb_supplier
+            // select_image_btn
             // 
-            this.cmb_supplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cmb_supplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmb_supplier.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_supplier.ForeColor = System.Drawing.Color.Black;
-            this.cmb_supplier.FormattingEnabled = true;
-            this.cmb_supplier.Location = new System.Drawing.Point(160, 263);
-            this.cmb_supplier.Name = "cmb_supplier";
-            this.cmb_supplier.Size = new System.Drawing.Size(507, 28);
-            this.cmb_supplier.TabIndex = 7;
+            this.select_image_btn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.select_image_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.select_image_btn.FlatAppearance.BorderSize = 0;
+            this.select_image_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.select_image_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.select_image_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.select_image_btn.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.select_image_btn.ForeColor = System.Drawing.Color.White;
+            this.select_image_btn.Location = new System.Drawing.Point(160, 338);
+            this.select_image_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.select_image_btn.Name = "select_image_btn";
+            this.select_image_btn.Size = new System.Drawing.Size(178, 37);
+            this.select_image_btn.TabIndex = 324;
+            this.select_image_btn.Text = "Select Image";
+            this.select_image_btn.UseVisualStyleBackColor = false;
+            this.select_image_btn.Click += new System.EventHandler(this.select_image_btn_Click);
             // 
             // Product_Detail
             // 
@@ -414,6 +426,7 @@
             this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.product_image)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -435,7 +448,6 @@
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Button btn_save;
-        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txt_qty;
         public System.Windows.Forms.TextBox txt_price;
@@ -445,5 +457,7 @@
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmb_supplier;
+        private System.Windows.Forms.PictureBox product_image;
+        public System.Windows.Forms.Button select_image_btn;
     }
 }
