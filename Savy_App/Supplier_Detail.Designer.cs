@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txt_phone = new System.Windows.Forms.TextBox();
             this.txt_address = new System.Windows.Forms.TextBox();
             this.txt_name = new System.Windows.Forms.TextBox();
@@ -51,9 +52,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.btn_save = new System.Windows.Forms.Button();
+            this.nameError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.addressError = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel_status.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel_type.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nameError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressError)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_phone
@@ -77,6 +82,7 @@
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(507, 54);
             this.txt_address.TabIndex = 3;
+            this.txt_address.Validating += new System.ComponentModel.CancelEventHandler(this.addressValidator);
             // 
             // txt_name
             // 
@@ -88,6 +94,7 @@
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(507, 27);
             this.txt_name.TabIndex = 2;
+            this.txt_name.Validating += new System.ComponentModel.CancelEventHandler(this.nameValidator);
             // 
             // label7
             // 
@@ -364,6 +371,14 @@
             this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // nameError
+            // 
+            this.nameError.ContainerControl = this;
+            // 
+            // addressError
+            // 
+            this.addressError.ContainerControl = this;
+            // 
             // Supplier_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -384,6 +399,8 @@
             this.groupBox2.PerformLayout();
             this.panel_type.ResumeLayout(false);
             this.panel_type.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nameError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -413,5 +430,7 @@
         public System.Windows.Forms.RadioButton rb_store;
         public System.Windows.Forms.TextBox txt_description;
         public System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ErrorProvider nameError;
+        private System.Windows.Forms.ErrorProvider addressError;
     }
 }
