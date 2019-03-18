@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.btn_close = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_s_phone = new System.Windows.Forms.Label();
             this.lbl_supplier_phone = new System.Windows.Forms.Label();
-            this.contactperson = new System.Windows.Forms.Label();
+            this.lbl_s_description = new System.Windows.Forms.Label();
             this.lbl_supplier_status = new System.Windows.Forms.Label();
             this.lbl_supplier_address = new System.Windows.Forms.Label();
-            this.relationtocontact = new System.Windows.Forms.Label();
+            this.lbl_s_address = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_s_status = new System.Windows.Forms.Label();
+            this.lbl_s_contactperson = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_supplier_name = new System.Windows.Forms.Label();
@@ -48,12 +48,12 @@
             this.btn_edit = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btn_add = new System.Windows.Forms.Button();
-            this.dgv_patientchart = new System.Windows.Forms.DataGridView();
+            this.dgv_chart = new System.Windows.Forms.DataGridView();
             this.btn_delete = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_patientchart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_chart)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_close
@@ -71,17 +71,17 @@
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // label1
+            // lbl_s_phone
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(179, 70);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 22);
-            this.label1.TabIndex = 377;
-            this.label1.Text = "Section";
+            this.lbl_s_phone.AutoSize = true;
+            this.lbl_s_phone.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_s_phone.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_s_phone.Location = new System.Drawing.Point(179, 70);
+            this.lbl_s_phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_s_phone.Name = "lbl_s_phone";
+            this.lbl_s_phone.Size = new System.Drawing.Size(68, 22);
+            this.lbl_s_phone.TabIndex = 377;
+            this.lbl_s_phone.Text = "Section";
             // 
             // lbl_supplier_phone
             // 
@@ -95,17 +95,17 @@
             this.lbl_supplier_phone.TabIndex = 375;
             this.lbl_supplier_phone.Text = "Phone # :";
             // 
-            // contactperson
+            // lbl_s_description
             // 
-            this.contactperson.AutoSize = true;
-            this.contactperson.BackColor = System.Drawing.Color.Transparent;
-            this.contactperson.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactperson.Location = new System.Drawing.Point(179, 38);
-            this.contactperson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.contactperson.Name = "contactperson";
-            this.contactperson.Size = new System.Drawing.Size(68, 22);
-            this.contactperson.TabIndex = 373;
-            this.contactperson.Text = "Section";
+            this.lbl_s_description.AutoSize = true;
+            this.lbl_s_description.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_s_description.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_s_description.Location = new System.Drawing.Point(179, 38);
+            this.lbl_s_description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_s_description.Name = "lbl_s_description";
+            this.lbl_s_description.Size = new System.Drawing.Size(68, 22);
+            this.lbl_s_description.TabIndex = 373;
+            this.lbl_s_description.Text = "Section";
             // 
             // lbl_supplier_status
             // 
@@ -131,61 +131,61 @@
             this.lbl_supplier_address.TabIndex = 370;
             this.lbl_supplier_address.Text = "Address :";
             // 
-            // relationtocontact
+            // lbl_s_address
             // 
-            this.relationtocontact.AutoSize = true;
-            this.relationtocontact.BackColor = System.Drawing.Color.Transparent;
-            this.relationtocontact.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.relationtocontact.Location = new System.Drawing.Point(179, 4);
-            this.relationtocontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.relationtocontact.Name = "relationtocontact";
-            this.relationtocontact.Size = new System.Drawing.Size(68, 22);
-            this.relationtocontact.TabIndex = 374;
-            this.relationtocontact.Text = "Section";
+            this.lbl_s_address.AutoSize = true;
+            this.lbl_s_address.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_s_address.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_s_address.Location = new System.Drawing.Point(179, 4);
+            this.lbl_s_address.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_s_address.Name = "lbl_s_address";
+            this.lbl_s_address.Size = new System.Drawing.Size(68, 22);
+            this.lbl_s_address.TabIndex = 374;
+            this.lbl_s_address.Text = "Section";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.lbl_s_status);
+            this.panel4.Controls.Add(this.lbl_s_contactperson);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.lbl_s_phone);
             this.panel4.Controls.Add(this.lbl_supplier_phone);
-            this.panel4.Controls.Add(this.contactperson);
+            this.panel4.Controls.Add(this.lbl_s_description);
             this.panel4.Controls.Add(this.lbl_supplier_status);
             this.panel4.Controls.Add(this.lbl_supplier_address);
-            this.panel4.Controls.Add(this.relationtocontact);
+            this.panel4.Controls.Add(this.lbl_s_address);
             this.panel4.Location = new System.Drawing.Point(13, 97);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1174, 164);
             this.panel4.TabIndex = 419;
             // 
-            // label5
+            // lbl_s_status
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(179, 130);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 22);
-            this.label5.TabIndex = 381;
-            this.label5.Text = "Section";
+            this.lbl_s_status.AutoSize = true;
+            this.lbl_s_status.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_s_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_s_status.Location = new System.Drawing.Point(179, 130);
+            this.lbl_s_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_s_status.Name = "lbl_s_status";
+            this.lbl_s_status.Size = new System.Drawing.Size(68, 22);
+            this.lbl_s_status.TabIndex = 381;
+            this.lbl_s_status.Text = "Section";
             // 
-            // label4
+            // lbl_s_contactperson
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(179, 99);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 22);
-            this.label4.TabIndex = 380;
-            this.label4.Text = "Section";
+            this.lbl_s_contactperson.AutoSize = true;
+            this.lbl_s_contactperson.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_s_contactperson.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_s_contactperson.Location = new System.Drawing.Point(179, 99);
+            this.lbl_s_contactperson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_s_contactperson.Name = "lbl_s_contactperson";
+            this.lbl_s_contactperson.Size = new System.Drawing.Size(68, 22);
+            this.lbl_s_contactperson.TabIndex = 380;
+            this.lbl_s_contactperson.Text = "Section";
             // 
             // label3
             // 
@@ -319,17 +319,18 @@
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // dgv_patientchart
+            // dgv_chart
             // 
-            this.dgv_patientchart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_patientchart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_patientchart.Location = new System.Drawing.Point(13, 310);
-            this.dgv_patientchart.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_patientchart.Name = "dgv_patientchart";
-            this.dgv_patientchart.ReadOnly = true;
-            this.dgv_patientchart.RowHeadersVisible = false;
-            this.dgv_patientchart.Size = new System.Drawing.Size(1174, 441);
-            this.dgv_patientchart.TabIndex = 417;
+            this.dgv_chart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_chart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_chart.Location = new System.Drawing.Point(13, 310);
+            this.dgv_chart.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_chart.Name = "dgv_chart";
+            this.dgv_chart.ReadOnly = true;
+            this.dgv_chart.RowHeadersVisible = false;
+            this.dgv_chart.Size = new System.Drawing.Size(1174, 441);
+            this.dgv_chart.TabIndex = 417;
+            this.dgv_chart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_chart_CellClick);
             // 
             // btn_delete
             // 
@@ -364,18 +365,19 @@
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.dgv_patientchart);
+            this.Controls.Add(this.dgv_chart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Supplier_List";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier_List";
+            this.Load += new System.EventHandler(this.Supplier_List_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_patientchart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,12 +386,12 @@
         #endregion
 
         private System.Windows.Forms.Button btn_close;
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label lbl_s_phone;
         public System.Windows.Forms.Label lbl_supplier_phone;
-        public System.Windows.Forms.Label contactperson;
+        public System.Windows.Forms.Label lbl_s_description;
         public System.Windows.Forms.Label lbl_supplier_status;
         public System.Windows.Forms.Label lbl_supplier_address;
-        public System.Windows.Forms.Label relationtocontact;
+        public System.Windows.Forms.Label lbl_s_address;
         public System.Windows.Forms.Panel panel4;
         public System.Windows.Forms.Label lbl_supplier_name;
         public System.Windows.Forms.Label Name_;
@@ -399,10 +401,10 @@
         public System.Windows.Forms.Button btn_edit;
         public System.Windows.Forms.Panel panel6;
         public System.Windows.Forms.Button btn_add;
-        public System.Windows.Forms.DataGridView dgv_patientchart;
+        public System.Windows.Forms.DataGridView dgv_chart;
         public System.Windows.Forms.Button btn_delete;
-        public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label lbl_s_status;
+        public System.Windows.Forms.Label lbl_s_contactperson;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label2;
     }

@@ -115,11 +115,6 @@ namespace Savy_App
             return dt;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void select_image_btn_Click(object sender, EventArgs e)
         {
             OpenFileDialog opnfd = new OpenFileDialog();

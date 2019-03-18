@@ -35,21 +35,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_brand_name = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_brand_supplier = new System.Windows.Forms.Label();
-            this.contactperson = new System.Windows.Forms.Label();
-            this.lbl_brand_status = new System.Windows.Forms.Label();
             this.lbl_brand_description = new System.Windows.Forms.Label();
-            this.relationtocontact = new System.Windows.Forms.Label();
-            this.dgv_patientchart = new System.Windows.Forms.DataGridView();
+            this.lbl_b_description = new System.Windows.Forms.Label();
+            this.dgv_chart = new System.Windows.Forms.DataGridView();
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.lbl_brand_status = new System.Windows.Forms.Label();
+            this.lbl_b_status = new System.Windows.Forms.Label();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_patientchart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_chart)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_brand_id
@@ -69,7 +67,7 @@
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.panel6.Controls.Add(this.Transaction);
-            this.panel6.Location = new System.Drawing.Point(13, 211);
+            this.panel6.Location = new System.Drawing.Point(14, 175);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1174, 41);
@@ -127,65 +125,15 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.lbl_brand_supplier);
-            this.panel4.Controls.Add(this.contactperson);
+            this.panel4.Controls.Add(this.lbl_b_status);
             this.panel4.Controls.Add(this.lbl_brand_status);
             this.panel4.Controls.Add(this.lbl_brand_description);
-            this.panel4.Controls.Add(this.relationtocontact);
+            this.panel4.Controls.Add(this.lbl_b_description);
             this.panel4.Location = new System.Drawing.Point(13, 97);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1174, 100);
+            this.panel4.Size = new System.Drawing.Size(1174, 70);
             this.panel4.TabIndex = 407;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(184, 67);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 22);
-            this.label1.TabIndex = 377;
-            this.label1.Text = "Section";
-            // 
-            // lbl_brand_supplier
-            // 
-            this.lbl_brand_supplier.AutoSize = true;
-            this.lbl_brand_supplier.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_brand_supplier.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_brand_supplier.Location = new System.Drawing.Point(17, 66);
-            this.lbl_brand_supplier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_brand_supplier.Name = "lbl_brand_supplier";
-            this.lbl_brand_supplier.Size = new System.Drawing.Size(84, 22);
-            this.lbl_brand_supplier.TabIndex = 375;
-            this.lbl_brand_supplier.Text = "Supplier:";
-            // 
-            // contactperson
-            // 
-            this.contactperson.AutoSize = true;
-            this.contactperson.BackColor = System.Drawing.Color.Transparent;
-            this.contactperson.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactperson.Location = new System.Drawing.Point(184, 8);
-            this.contactperson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.contactperson.Name = "contactperson";
-            this.contactperson.Size = new System.Drawing.Size(68, 22);
-            this.contactperson.TabIndex = 373;
-            this.contactperson.Text = "Section";
-            // 
-            // lbl_brand_status
-            // 
-            this.lbl_brand_status.AutoSize = true;
-            this.lbl_brand_status.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_brand_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_brand_status.Location = new System.Drawing.Point(17, 7);
-            this.lbl_brand_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_brand_status.Name = "lbl_brand_status";
-            this.lbl_brand_status.Size = new System.Drawing.Size(64, 22);
-            this.lbl_brand_status.TabIndex = 369;
-            this.lbl_brand_status.Text = "Status:";
             // 
             // lbl_brand_description
             // 
@@ -199,29 +147,30 @@
             this.lbl_brand_description.TabIndex = 370;
             this.lbl_brand_description.Text = "Description:";
             // 
-            // relationtocontact
+            // lbl_b_description
             // 
-            this.relationtocontact.AutoSize = true;
-            this.relationtocontact.BackColor = System.Drawing.Color.Transparent;
-            this.relationtocontact.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.relationtocontact.Location = new System.Drawing.Point(184, 37);
-            this.relationtocontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.relationtocontact.Name = "relationtocontact";
-            this.relationtocontact.Size = new System.Drawing.Size(68, 22);
-            this.relationtocontact.TabIndex = 374;
-            this.relationtocontact.Text = "Section";
+            this.lbl_b_description.AutoSize = true;
+            this.lbl_b_description.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_b_description.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_b_description.Location = new System.Drawing.Point(184, 37);
+            this.lbl_b_description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_b_description.Name = "lbl_b_description";
+            this.lbl_b_description.Size = new System.Drawing.Size(68, 22);
+            this.lbl_b_description.TabIndex = 374;
+            this.lbl_b_description.Text = "Section";
             // 
-            // dgv_patientchart
+            // dgv_chart
             // 
-            this.dgv_patientchart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_patientchart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_patientchart.Location = new System.Drawing.Point(13, 249);
-            this.dgv_patientchart.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv_patientchart.Name = "dgv_patientchart";
-            this.dgv_patientchart.ReadOnly = true;
-            this.dgv_patientchart.RowHeadersVisible = false;
-            this.dgv_patientchart.Size = new System.Drawing.Size(1174, 502);
-            this.dgv_patientchart.TabIndex = 402;
+            this.dgv_chart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_chart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_chart.Location = new System.Drawing.Point(13, 213);
+            this.dgv_chart.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_chart.Name = "dgv_chart";
+            this.dgv_chart.ReadOnly = true;
+            this.dgv_chart.RowHeadersVisible = false;
+            this.dgv_chart.Size = new System.Drawing.Size(1174, 538);
+            this.dgv_chart.TabIndex = 402;
+            this.dgv_chart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_chart_CellClick);
             // 
             // btn_close
             // 
@@ -293,6 +242,30 @@
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // lbl_brand_status
+            // 
+            this.lbl_brand_status.AutoSize = true;
+            this.lbl_brand_status.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_brand_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_brand_status.Location = new System.Drawing.Point(17, 7);
+            this.lbl_brand_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_brand_status.Name = "lbl_brand_status";
+            this.lbl_brand_status.Size = new System.Drawing.Size(64, 22);
+            this.lbl_brand_status.TabIndex = 369;
+            this.lbl_brand_status.Text = "Status:";
+            // 
+            // lbl_b_status
+            // 
+            this.lbl_b_status.AutoSize = true;
+            this.lbl_b_status.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_b_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_b_status.Location = new System.Drawing.Point(184, 8);
+            this.lbl_b_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_b_status.Name = "lbl_b_status";
+            this.lbl_b_status.Size = new System.Drawing.Size(68, 22);
+            this.lbl_b_status.TabIndex = 373;
+            this.lbl_b_status.Text = "Section";
+            // 
             // Brand_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -308,18 +281,19 @@
             this.Controls.Add(this.Name_);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.dgv_patientchart);
+            this.Controls.Add(this.dgv_chart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Brand_List";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Brand";
+            this.Load += new System.EventHandler(this.Brand_List_Load);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_patientchart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,17 +308,15 @@
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label lbl_brand_name;
         public System.Windows.Forms.Panel panel4;
-        public System.Windows.Forms.Label contactperson;
-        public System.Windows.Forms.Label lbl_brand_status;
         public System.Windows.Forms.Label lbl_brand_description;
-        public System.Windows.Forms.Label relationtocontact;
-        public System.Windows.Forms.DataGridView dgv_patientchart;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label lbl_brand_supplier;
+        public System.Windows.Forms.Label lbl_b_description;
+        public System.Windows.Forms.DataGridView dgv_chart;
         private System.Windows.Forms.Button btn_close;
         public System.Windows.Forms.Button btn_delete;
         public System.Windows.Forms.Button btn_edit;
         public System.Windows.Forms.Button btn_add;
+        public System.Windows.Forms.Label lbl_b_status;
+        public System.Windows.Forms.Label lbl_brand_status;
 
     }
 }
