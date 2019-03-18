@@ -15,6 +15,7 @@ namespace Savy_App
     {
         SQL Record;
         DataTable dt;
+        int supplierStatus, supplierId, supplierType;
 
         public Supplier_Detail()
         {
@@ -29,7 +30,7 @@ namespace Savy_App
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if(ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidateChildren(ValidationConstraints.Enabled) && lbl_supplier_id.Text == "")
             {
                 Record = new SQL();
                 dt = new DataTable();
@@ -54,6 +55,28 @@ namespace Savy_App
                 Record.close();
                 clearSupplierFields();
             }
+            else if (ValidateChildren(ValidationConstraints.Enabled) && lbl_supplier_id.Text != "")
+            {
+                Record = new SQL();
+                dt = new DataTable();
+                int status = rb_active.Checked == true ? 1 : 0;
+                int type = rb_store.Checked == true ? 1 : 0;
+                String update_statement = "UPDATE Suppliers set supplierName = '" + txt_name.Text
+                    + "', supplierDescription = '" + txt_description.Text
+                    + "', supplierAddress = '" + txt_address.Text
+                    + "', supplierPhone = '" + txt_phone.Text
+                    + "', supplierContactPerson = '" + txt_contact_person.Text
+                    + "', supplierStatus = " + status
+                    + ", supplierType = " + type
+                    + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
+                    + "' where supplierId = " + Convert.ToInt32(lbl_supplier_id.Text)
+                    + "";
+
+                Record.CUD_STATEMENT(update_statement);
+                MessageBox.Show("Supplier Detail updated successfully!");
+                Record.close();
+                clearSupplierFields();
+            }
         }
 
         public void clearSupplierFields()
@@ -68,6 +91,7 @@ namespace Savy_App
             rb_store.Checked = true;
             rb_person.Checked = false;
             dtp_date.Value = DateTime.Now;
+            lbl_supplier_id.Text = "";
         }
 
         private void nameValidator(object sender, CancelEventArgs e)
@@ -96,6 +120,50 @@ namespace Savy_App
             {
                 e.Cancel = false;
                 addressError.SetError(txt_address, null);
+            }
+        }
+
+        private void Supplier_Detail_Load(object sender, EventArgs e)
+        {
+            if (lbl_supplier_id.Text == "")
+            {
+                clearSupplierFields();
+            }
+            else
+            {
+                Record = new SQL();
+                dt = new DataTable();
+                supplierId = Convert.ToInt32(lbl_supplier_id.Text);
+                dt = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId=" + supplierId);
+                txt_name.Text = dt.Rows[0]["supplierName"].ToString();
+                txt_address.Text = dt.Rows[0]["supplierAddress"].ToString();
+                txt_description.Text = dt.Rows[0]["supplierDescription"].ToString();
+                supplierStatus = Convert.ToInt32(dt.Rows[0]["supplierStatus"].ToString());
+                supplierType = Convert.ToInt32(dt.Rows[0]["supplierType"].ToString());
+                txt_phone.Text = dt.Rows[0]["supplierPhone"].ToString();
+                txt_contact_person.Text = dt.Rows[0]["supplierContactPerson"].ToString();
+
+                if (supplierStatus == 1)
+                {
+                    rb_active.Checked = true;
+                    rb_inactive.Checked = false;
+                }
+                else
+                {
+                    rb_active.Checked = false;
+                    rb_inactive.Checked = true;
+                }
+
+                if (supplierType == 1)
+                {
+                    rb_store.Checked = true;
+                    rb_person.Checked = false;
+                }
+                else
+                {
+                    rb_store.Checked = false;
+                    rb_person.Checked = true;
+                }
             }
         }
     }

@@ -289,6 +289,7 @@
             this.btn_edit.TabIndex = 418;
             this.btn_edit.Text = "Edit";
             this.btn_edit.UseVisualStyleBackColor = false;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // panel6
             // 

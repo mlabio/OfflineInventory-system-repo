@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbl_brand_id = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.panel_status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -232,6 +233,19 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // lbl_brand_id
+            // 
+            this.lbl_brand_id.AutoSize = true;
+            this.lbl_brand_id.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_brand_id.ForeColor = System.Drawing.Color.Black;
+            this.lbl_brand_id.Location = new System.Drawing.Point(660, 11);
+            this.lbl_brand_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_brand_id.Name = "lbl_brand_id";
+            this.lbl_brand_id.Size = new System.Drawing.Size(81, 17);
+            this.lbl_brand_id.TabIndex = 421;
+            this.lbl_brand_id.Text = "Brand\'s ID :";
+            this.lbl_brand_id.Visible = false;
+            // 
             // Brand_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -239,6 +253,7 @@
             this.BackgroundImage = global::Savy_App.Properties.Resources._800x470;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 470);
+            this.Controls.Add(this.lbl_brand_id);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_save);
@@ -246,12 +261,14 @@
             this.Name = "Brand_Details";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Brand_Details";
+            this.Load += new System.EventHandler(this.Brand_Details_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel_status.ResumeLayout(false);
             this.panel_status.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -271,5 +288,6 @@
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label8;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        public System.Windows.Forms.Label lbl_brand_id;
     }
 }

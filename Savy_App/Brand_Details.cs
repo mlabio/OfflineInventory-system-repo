@@ -14,6 +14,7 @@ namespace Savy_App
     {
         SQL Record;
         DataTable dt;
+        int brand_status, brandId;
         public Brand_Details()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Savy_App
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidateChildren(ValidationConstraints.Enabled) && lbl_brand_id.Text == "")
             {
                 Record = new SQL();
                 dt = new DataTable();
@@ -47,6 +48,23 @@ namespace Savy_App
                 Record.close();
                 clearBrandFields();
             }
+            else if (ValidateChildren(ValidationConstraints.Enabled) && lbl_brand_id.Text != "")
+            {
+                Record = new SQL();
+                dt = new DataTable();
+                int status = rb_active.Checked == true ? 1 : 0;
+                String update_statement = "UPDATE Brands set brandName = '" + txt_name.Text
+                    + "', brandDescription = '" + txt_description.Text
+                    + "', brandStatus = " + status
+                    + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
+                    + "' where brandId = " + Convert.ToInt32(lbl_brand_id.Text) 
+                    + "";
+
+                Record.CUD_STATEMENT(update_statement);
+                MessageBox.Show("Brand Detail updated successfully!");
+                Record.close();
+                clearBrandFields();
+            }
         }
 
         public void clearBrandFields()
@@ -56,6 +74,7 @@ namespace Savy_App
             rb_active.Checked = true;
             rb_inactive.Checked = false;
             dtp_date.Value = DateTime.Now;
+            lbl_brand_id.Text = "";
         }
 
         private void brands_validation(object sender, CancelEventArgs e)
@@ -70,6 +89,34 @@ namespace Savy_App
             {
                 e.Cancel = false;
                 errorProvider1.SetError(txt_name, null);
+            }
+        }
+
+        private void Brand_Details_Load(object sender, EventArgs e)
+        {
+            if (lbl_brand_id.Text == "")
+            {
+                clearBrandFields();
+            }
+            else
+            {
+                Record = new SQL();
+                dt = new DataTable();
+                brandId = Convert.ToInt32(lbl_brand_id.Text);
+                dt = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId=" + brandId);
+                txt_name.Text = dt.Rows[0]["brandName"].ToString();
+                txt_description.Text = dt.Rows[0]["brandDescription"].ToString();
+                brand_status = Convert.ToInt32(dt.Rows[0]["brandStatus"].ToString());
+                if (brand_status == 1)
+                {
+                    rb_active.Checked = true;
+                    rb_inactive.Checked = false;
+                }
+                else
+                {
+                    rb_active.Checked = false;
+                    rb_inactive.Checked = true;
+                }
             }
         }
     }

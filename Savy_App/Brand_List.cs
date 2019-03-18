@@ -84,6 +84,25 @@ namespace Savy_App
             lbl_brand_name.Text = "Brand Name";
             lbl_b_description.Text = "";
             lbl_b_status.Text = "";
+            lbl_brand_id.Text = "";
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            if (lbl_brand_id.Text == "")
+            {
+                MessageBox.Show("No brand selected!");
+            }
+            else
+            {
+                Brand_Details h = new Brand_Details();
+                h.lbl_brand_id.Text = lbl_brand_id.Text;
+                h.MdiParent = MdiParent;
+                h.Show();
+
+                this.Close();
+            }
+            
         }
 
 

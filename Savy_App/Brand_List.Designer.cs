@@ -35,6 +35,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_brand_name = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbl_b_status = new System.Windows.Forms.Label();
+            this.lbl_brand_status = new System.Windows.Forms.Label();
             this.lbl_brand_description = new System.Windows.Forms.Label();
             this.lbl_b_description = new System.Windows.Forms.Label();
             this.dgv_chart = new System.Windows.Forms.DataGridView();
@@ -42,8 +44,6 @@
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.lbl_brand_status = new System.Windows.Forms.Label();
-            this.lbl_b_status = new System.Windows.Forms.Label();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -135,6 +135,30 @@
             this.panel4.Size = new System.Drawing.Size(1174, 70);
             this.panel4.TabIndex = 407;
             // 
+            // lbl_b_status
+            // 
+            this.lbl_b_status.AutoSize = true;
+            this.lbl_b_status.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_b_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_b_status.Location = new System.Drawing.Point(184, 8);
+            this.lbl_b_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_b_status.Name = "lbl_b_status";
+            this.lbl_b_status.Size = new System.Drawing.Size(68, 22);
+            this.lbl_b_status.TabIndex = 373;
+            this.lbl_b_status.Text = "Section";
+            // 
+            // lbl_brand_status
+            // 
+            this.lbl_brand_status.AutoSize = true;
+            this.lbl_brand_status.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_brand_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_brand_status.Location = new System.Drawing.Point(17, 7);
+            this.lbl_brand_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_brand_status.Name = "lbl_brand_status";
+            this.lbl_brand_status.Size = new System.Drawing.Size(64, 22);
+            this.lbl_brand_status.TabIndex = 369;
+            this.lbl_brand_status.Text = "Status:";
+            // 
             // lbl_brand_description
             // 
             this.lbl_brand_description.AutoSize = true;
@@ -222,6 +246,7 @@
             this.btn_edit.TabIndex = 424;
             this.btn_edit.Text = "Edit";
             this.btn_edit.UseVisualStyleBackColor = false;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_add
             // 
@@ -241,30 +266,6 @@
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // lbl_brand_status
-            // 
-            this.lbl_brand_status.AutoSize = true;
-            this.lbl_brand_status.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_brand_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_brand_status.Location = new System.Drawing.Point(17, 7);
-            this.lbl_brand_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_brand_status.Name = "lbl_brand_status";
-            this.lbl_brand_status.Size = new System.Drawing.Size(64, 22);
-            this.lbl_brand_status.TabIndex = 369;
-            this.lbl_brand_status.Text = "Status:";
-            // 
-            // lbl_b_status
-            // 
-            this.lbl_b_status.AutoSize = true;
-            this.lbl_b_status.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_b_status.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_b_status.Location = new System.Drawing.Point(184, 8);
-            this.lbl_b_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_b_status.Name = "lbl_b_status";
-            this.lbl_b_status.Size = new System.Drawing.Size(68, 22);
-            this.lbl_b_status.TabIndex = 373;
-            this.lbl_b_status.Text = "Section";
             // 
             // Brand_List
             // 

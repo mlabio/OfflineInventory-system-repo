@@ -96,5 +96,22 @@ namespace Savy_App
             lbl_s_status.Text = "";
             lbl_supplier_id.Text = "";
         }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            if (lbl_supplier_id.Text == "")
+            {
+                MessageBox.Show("No supplier selected!");
+            }
+            else
+            {
+                Supplier_Detail h = new Supplier_Detail();
+                h.lbl_supplier_id.Text = lbl_supplier_id.Text;
+                h.MdiParent = MdiParent;
+                h.Show();
+
+                this.Close();
+            }
+        }
     }
 }

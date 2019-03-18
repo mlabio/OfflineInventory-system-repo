@@ -54,6 +54,7 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.nameError = new System.Windows.Forms.ErrorProvider(this.components);
             this.addressError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbl_supplier_id = new System.Windows.Forms.Label();
             this.panel_status.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel_type.SuspendLayout();
@@ -379,6 +380,19 @@
             // 
             this.addressError.ContainerControl = this;
             // 
+            // lbl_supplier_id
+            // 
+            this.lbl_supplier_id.AutoSize = true;
+            this.lbl_supplier_id.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_supplier_id.ForeColor = System.Drawing.Color.Black;
+            this.lbl_supplier_id.Location = new System.Drawing.Point(659, 11);
+            this.lbl_supplier_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_supplier_id.Name = "lbl_supplier_id";
+            this.lbl_supplier_id.Size = new System.Drawing.Size(88, 17);
+            this.lbl_supplier_id.TabIndex = 430;
+            this.lbl_supplier_id.Text = "Supplier\'s ID";
+            this.lbl_supplier_id.Visible = false;
+            // 
             // Supplier_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -386,6 +400,7 @@
             this.BackgroundImage = global::Savy_App.Properties.Resources._800x470;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 470);
+            this.Controls.Add(this.lbl_supplier_id);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
@@ -393,6 +408,7 @@
             this.Name = "Supplier_Detail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier_Detail";
+            this.Load += new System.EventHandler(this.Supplier_Detail_Load);
             this.panel_status.ResumeLayout(false);
             this.panel_status.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -402,6 +418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nameError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressError)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -432,5 +449,6 @@
         public System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider nameError;
         private System.Windows.Forms.ErrorProvider addressError;
+        public System.Windows.Forms.Label lbl_supplier_id;
     }
 }
