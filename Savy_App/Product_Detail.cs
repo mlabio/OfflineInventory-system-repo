@@ -24,6 +24,11 @@ namespace Savy_App
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
+            txt_name.MaxLength = 30;
+            txt_description.MaxLength = 30;
+            txt_sku.MaxLength = 20;
+            txt_price.MaxLength = 12;
+            txt_qty.MaxLength = 12;
         }
 
         private void Product_Detail_Load(object sender, EventArgs e)

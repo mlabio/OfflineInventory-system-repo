@@ -24,6 +24,8 @@ namespace Savy_App
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
+            txt_name.MaxLength = 20;
+            txt_description.MaxLength = 30;
         }
 
         private void btn_save_Click(object sender, EventArgs e)

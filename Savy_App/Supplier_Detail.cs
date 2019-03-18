@@ -21,6 +21,12 @@ namespace Savy_App
         {
             InitializeComponent();
             dtp_date.Value = DateTime.Now;
+            txt_name.MaxLength = 30;
+            txt_address.MaxLength = 30;
+            txt_description.MaxLength = 30;
+            txt_phone.MaxLength = 15;
+            txt_contact_person.MaxLength = 30;
+
         }
 
         private void btn_close_Click(object sender, EventArgs e)
