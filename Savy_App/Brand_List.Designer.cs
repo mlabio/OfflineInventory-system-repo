@@ -55,7 +55,7 @@
             this.lbl_brand_id.AutoSize = true;
             this.lbl_brand_id.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_brand_id.ForeColor = System.Drawing.Color.Black;
-            this.lbl_brand_id.Location = new System.Drawing.Point(868, 9);
+            this.lbl_brand_id.Location = new System.Drawing.Point(1073, 10);
             this.lbl_brand_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_brand_id.Name = "lbl_brand_id";
             this.lbl_brand_id.Size = new System.Drawing.Size(81, 17);
@@ -228,6 +228,7 @@
             this.btn_delete.TabIndex = 426;
             this.btn_delete.Text = "Delete";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_edit
             // 

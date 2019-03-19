@@ -37,24 +37,7 @@ namespace Savy_App
         private void Product_List_Load(object sender, EventArgs e)
         {
             clearProductFields();
-            Record = new SQL();
-            dt = new DataTable();
-            dt = Record.SELECT_STATEMENT("SELECT * FROM Products");
-
-            dgv_chart.DataSource = dt;
-
-            dgv_chart.Columns[0].Visible = false;
-            dgv_chart.Columns[1].HeaderText = "Product Name";
-            dgv_chart.Columns[2].HeaderText = "Description";
-            dgv_chart.Columns[3].Visible = false;
-            dgv_chart.Columns[4].HeaderText = "SKU";
-            dgv_chart.Columns[5].HeaderText = "Price";
-            dgv_chart.Columns[6].HeaderText = "Quantity";
-            dgv_chart.Columns[7].Visible = false;
-            dgv_chart.Columns[8].Visible = false;
-            dgv_chart.Columns[9].Visible = false;
-            dgv_chart.Columns[10].Visible = false;
-            dgv_chart.Columns[11].Visible = false;
+            loadRecords();
         }
 
         private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -115,6 +98,55 @@ namespace Savy_App
             lbl_p_availability.Text = "";
             lbl_p_supplier.Text = "";
             lbl_p_brand.Text = "";
+        }
+        public void loadRecords()
+        {
+            Record = new SQL();
+            dt = new DataTable();
+            dt = Record.SELECT_STATEMENT("SELECT * FROM Products");
+
+            dgv_chart.DataSource = dt;
+
+            dgv_chart.Columns[0].Visible = false;
+            dgv_chart.Columns[1].HeaderText = "Product Name";
+            dgv_chart.Columns[2].HeaderText = "Description";
+            dgv_chart.Columns[3].Visible = false;
+            dgv_chart.Columns[4].HeaderText = "SKU";
+            dgv_chart.Columns[5].HeaderText = "Price";
+            dgv_chart.Columns[6].HeaderText = "Quantity";
+            dgv_chart.Columns[7].Visible = false;
+            dgv_chart.Columns[8].Visible = false;
+            dgv_chart.Columns[9].Visible = false;
+            dgv_chart.Columns[10].Visible = false;
+            dgv_chart.Columns[11].Visible = false;
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (lbl_product_id.Text == "")
+            {
+                MessageBox.Show("No product selected!");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this supplier?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Record = new SQL();
+
+                    string delete_record = "DELETE FROM Products WHERE productId = " + Convert.ToInt32(lbl_product_id.Text);
+                    Record.CUD_STATEMENT(delete_record);
+                    loadRecords();
+                    MessageBox.Show("Product successfully deleted!");
+                    clearProductFields();
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
+            }
         }
 
         

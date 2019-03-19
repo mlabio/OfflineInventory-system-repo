@@ -36,22 +36,7 @@ namespace Savy_App
         private void Supplier_List_Load(object sender, EventArgs e)
         {
             clearSupplierFields();
-            Record = new SQL();
-            dt = new DataTable();
-            dt = Record.SELECT_STATEMENT("SELECT * FROM Suppliers");
-
-            dgv_chart.DataSource = dt;
-
-            dgv_chart.Columns[0].Visible = false;
-            dgv_chart.Columns[1].HeaderText = "Supplier Name";
-            dgv_chart.Columns[2].HeaderText = "Description";
-            dgv_chart.Columns[3].Visible = false;
-            dgv_chart.Columns[4].HeaderText = "Address";
-            dgv_chart.Columns[5].Visible = false;
-            dgv_chart.Columns[6].HeaderText = "Phone #";
-            dgv_chart.Columns[7].HeaderText = "Contact Person";
-            dgv_chart.Columns[8].Visible = false;
-            dgv_chart.Columns[9].Visible = false;
+            loadRecords();
         }
 
         private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -96,6 +81,25 @@ namespace Savy_App
             lbl_s_status.Text = "";
             lbl_supplier_id.Text = "";
         }
+        public void loadRecords()
+        {
+            Record = new SQL();
+            dt = new DataTable();
+            dt = Record.SELECT_STATEMENT("SELECT * FROM Suppliers");
+
+            dgv_chart.DataSource = dt;
+
+            dgv_chart.Columns[0].Visible = false;
+            dgv_chart.Columns[1].HeaderText = "Supplier Name";
+            dgv_chart.Columns[2].HeaderText = "Description";
+            dgv_chart.Columns[3].Visible = false;
+            dgv_chart.Columns[4].HeaderText = "Address";
+            dgv_chart.Columns[5].Visible = false;
+            dgv_chart.Columns[6].HeaderText = "Phone #";
+            dgv_chart.Columns[7].HeaderText = "Contact Person";
+            dgv_chart.Columns[8].Visible = false;
+            dgv_chart.Columns[9].Visible = false;
+        }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
@@ -111,6 +115,34 @@ namespace Savy_App
                 h.Show();
 
                 this.Close();
+            }
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (lbl_supplier_id.Text == "")
+            {
+                MessageBox.Show("No supplier selected!");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this supplier?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Record = new SQL();
+
+                    string delete_record = "DELETE FROM Suppliers WHERE supplierId = " + Convert.ToInt32(lbl_supplier_id.Text);
+                    Record.CUD_STATEMENT(delete_record);
+                    loadRecords();
+                    MessageBox.Show("Supplier successfully deleted!");
+                    clearSupplierFields();
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
             }
         }
     }

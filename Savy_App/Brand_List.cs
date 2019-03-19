@@ -36,18 +36,7 @@ namespace Savy_App
         private void Brand_List_Load(object sender, EventArgs e)
         {
             clearBrandFields();
-            Record = new SQL();
-            dt = new DataTable();
-            dt = Record.SELECT_STATEMENT("SELECT * FROM Brands");
-
-            dgv_chart.DataSource = dt;
-
-            dgv_chart.Columns[0].Visible = false;
-            dgv_chart.Columns[1].HeaderText = "Brand Name";
-            dgv_chart.Columns[2].HeaderText = "Description";
-            dgv_chart.Columns[3].Visible = false;
-            dgv_chart.Columns[4].Visible = false;
-            dgv_chart.Columns[5].Visible = false;
+            loadRecords();
         }
 
         private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -87,6 +76,22 @@ namespace Savy_App
             lbl_brand_id.Text = "";
         }
 
+        public void loadRecords()
+        {
+            Record = new SQL();
+            dt = new DataTable();
+            dt = Record.SELECT_STATEMENT("SELECT * FROM Brands");
+
+            dgv_chart.DataSource = dt;
+
+            dgv_chart.Columns[0].Visible = false;
+            dgv_chart.Columns[1].HeaderText = "Brand Name";
+            dgv_chart.Columns[2].HeaderText = "Description";
+            dgv_chart.Columns[3].Visible = false;
+            dgv_chart.Columns[4].Visible = false;
+            dgv_chart.Columns[5].Visible = false;
+        }
+
         private void btn_edit_Click(object sender, EventArgs e)
         {
             if (lbl_brand_id.Text == "")
@@ -103,6 +108,34 @@ namespace Savy_App
                 this.Close();
             }
             
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (lbl_brand_id.Text == "")
+            {
+                MessageBox.Show("No brand selected!");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this brand?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Record = new SQL();
+
+                    string delete_record = "DELETE FROM Brands WHERE supplierId = " + Convert.ToInt32(lbl_brand_id.Text);
+                    Record.CUD_STATEMENT(delete_record);
+                    loadRecords();
+                    MessageBox.Show("Brand successfully deleted!");
+                    clearBrandFields();
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
+            }
         }
 
 
