@@ -385,12 +385,11 @@
             this.lbl_supplier_id.AutoSize = true;
             this.lbl_supplier_id.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_supplier_id.ForeColor = System.Drawing.Color.Black;
-            this.lbl_supplier_id.Location = new System.Drawing.Point(659, 11);
+            this.lbl_supplier_id.Location = new System.Drawing.Point(747, 11);
             this.lbl_supplier_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_supplier_id.Name = "lbl_supplier_id";
-            this.lbl_supplier_id.Size = new System.Drawing.Size(88, 17);
+            this.lbl_supplier_id.Size = new System.Drawing.Size(0, 17);
             this.lbl_supplier_id.TabIndex = 430;
-            this.lbl_supplier_id.Text = "Supplier\'s ID";
             this.lbl_supplier_id.Visible = false;
             // 
             // Supplier_Detail

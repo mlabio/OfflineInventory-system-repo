@@ -57,7 +57,7 @@ namespace Savy_App
                     lbl_product_name.Text = dt.Rows[0]["productName"].ToString();
                     lbl_p_description.Text = dt.Rows[0]["productDescription"].ToString();
                     lbl_p_price.Text = dt.Rows[0]["productPrice"].ToString();
-                    lbl_p_quantity.Text = dt.Rows[0]["productQuantity"].ToString();
+                    lbl_p_quantity.Text = dt.Rows[0]["productQty"].ToString();
                     lbl_p_SKU.Text = dt.Rows[0]["productSKU"].ToString();
                     lbl_p_availability.Text = dt.Rows[0]["productStatus"].ToString() == "1" ? "True" : "False";
                     brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
@@ -67,14 +67,14 @@ namespace Savy_App
                         Record = new SQL();
                         dt2 = new DataTable();
                         dt2 = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + supplierId);
-                        lbl_p_supplier.Text = dt.Rows[0]["supplierName"].ToString();
+                        lbl_p_supplier.Text = dt2.Rows[0]["supplierName"].ToString();
                     }
                     if (brandId != 0)
                     {
                         Record = new SQL();
                         dt2 = new DataTable();
                         dt2 = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + brandId);
-                        lbl_p_brand.Text = dt.Rows[0]["brandName"].ToString();
+                        lbl_p_brand.Text = dt2.Rows[0]["brandName"].ToString();
                     }
                 }
                 else
@@ -146,6 +146,23 @@ namespace Savy_App
                     //Do nothing
                     //this.Close();
                 }
+            }
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            if (lbl_product_id.Text == "")
+            {
+                MessageBox.Show("No product selected!");
+            }
+            else
+            {
+                Product_Detail h = new Product_Detail();
+                h.lbl_product_id.Text = lbl_product_id.Text;
+                h.MdiParent = MdiParent;
+                h.Show();
+
+                this.Close();
             }
         }
 

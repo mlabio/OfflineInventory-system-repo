@@ -118,15 +118,18 @@ namespace Savy_App
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this brand?", "Warning!", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this brand, (products under this brand will also be deleted)?", "Warning!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Record = new SQL();
-
-                    string delete_record = "DELETE FROM Brands WHERE supplierId = " + Convert.ToInt32(lbl_brand_id.Text);
+                    string delete_record = "DELETE FROM Brands WHERE brandId = " + Convert.ToInt32(lbl_brand_id.Text);
                     Record.CUD_STATEMENT(delete_record);
+
+                    string delete_record2 = "DELETE FROM Products WHERE brandId = " + Convert.ToInt32(lbl_brand_id.Text);
+                    Record.CUD_STATEMENT(delete_record2);
+
                     loadRecords();
-                    MessageBox.Show("Brand successfully deleted!");
+                    MessageBox.Show("Brand and Products under this are successfully deleted!");
                     clearBrandFields();
 
                 }

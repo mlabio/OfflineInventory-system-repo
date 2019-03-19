@@ -54,6 +54,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
+            this.lbl_product_id = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.product_image)).BeginInit();
@@ -262,6 +263,7 @@
             this.select_image_btn.TabIndex = 324;
             this.select_image_btn.Text = "Select Image";
             this.select_image_btn.UseVisualStyleBackColor = false;
+            this.select_image_btn.Visible = false;
             this.select_image_btn.Click += new System.EventHandler(this.select_image_btn_Click);
             // 
             // product_image
@@ -271,6 +273,7 @@
             this.product_image.Size = new System.Drawing.Size(112, 82);
             this.product_image.TabIndex = 323;
             this.product_image.TabStop = false;
+            this.product_image.Visible = false;
             // 
             // cmb_supplier
             // 
@@ -295,6 +298,7 @@
             this.label10.Size = new System.Drawing.Size(61, 20);
             this.label10.TabIndex = 322;
             this.label10.Text = "Image :";
+            this.label10.Visible = false;
             // 
             // txt_qty
             // 
@@ -407,6 +411,18 @@
             this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // lbl_product_id
+            // 
+            this.lbl_product_id.AutoSize = true;
+            this.lbl_product_id.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_product_id.ForeColor = System.Drawing.Color.Black;
+            this.lbl_product_id.Location = new System.Drawing.Point(749, 11);
+            this.lbl_product_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_product_id.Name = "lbl_product_id";
+            this.lbl_product_id.Size = new System.Drawing.Size(0, 17);
+            this.lbl_product_id.TabIndex = 426;
+            this.lbl_product_id.Visible = false;
+            // 
             // Product_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -414,6 +430,7 @@
             this.BackgroundImage = global::Savy_App.Properties.Resources._800x470;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 470);
+            this.Controls.Add(this.lbl_product_id);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_save);
@@ -428,6 +445,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.product_image)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -459,5 +477,6 @@
         private System.Windows.Forms.ComboBox cmb_supplier;
         private System.Windows.Forms.PictureBox product_image;
         public System.Windows.Forms.Button select_image_btn;
+        public System.Windows.Forms.Label lbl_product_id;
     }
 }

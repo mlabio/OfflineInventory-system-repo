@@ -126,15 +126,12 @@ namespace Savy_App
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this supplier?", "Warning!", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this supplier (products under this supplier will also be deleted)?", "Warning!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Record = new SQL();
-
-                    string delete_record = "DELETE FROM Suppliers WHERE supplierId = " + Convert.ToInt32(lbl_supplier_id.Text);
-                    Record.CUD_STATEMENT(delete_record);
+                    deleteSupplier();
+                    deleteProducts();
                     loadRecords();
-                    MessageBox.Show("Supplier successfully deleted!");
                     clearSupplierFields();
 
                 }
@@ -145,5 +142,21 @@ namespace Savy_App
                 }
             }
         }
+
+        public void deleteSupplier()
+        {
+            Record = new SQL();
+            string delete_record = "DELETE FROM Suppliers WHERE supplierId = " + Convert.ToInt32(lbl_supplier_id.Text);
+            Record.CUD_STATEMENT(delete_record);
+            MessageBox.Show("Supplier successfully deleted!");
+        }
+        public void deleteProducts()
+        {
+            Record = new SQL();
+            string delete_record = "DELETE FROM Products WHERE supplierId = " + Convert.ToInt32(lbl_supplier_id.Text);
+            Record.CUD_STATEMENT(delete_record);
+            MessageBox.Show("Products under this supplier are successfully deleted!");
+        }
+
     }
 }

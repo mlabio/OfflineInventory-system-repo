@@ -238,12 +238,11 @@
             this.lbl_brand_id.AutoSize = true;
             this.lbl_brand_id.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_brand_id.ForeColor = System.Drawing.Color.Black;
-            this.lbl_brand_id.Location = new System.Drawing.Point(660, 11);
+            this.lbl_brand_id.Location = new System.Drawing.Point(750, 11);
             this.lbl_brand_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_brand_id.Name = "lbl_brand_id";
-            this.lbl_brand_id.Size = new System.Drawing.Size(81, 17);
+            this.lbl_brand_id.Size = new System.Drawing.Size(0, 17);
             this.lbl_brand_id.TabIndex = 421;
-            this.lbl_brand_id.Text = "Brand\'s ID :";
             this.lbl_brand_id.Visible = false;
             // 
             // Brand_Details
