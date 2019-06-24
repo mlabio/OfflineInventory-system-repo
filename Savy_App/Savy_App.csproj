@@ -32,8 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,11 +69,23 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
     </Compile>
     <Compile Include="Product_Detail.cs">
       <SubType>Form</SubType>
@@ -82,15 +101,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SavyDBDataSet1.Designer.cs">
+    <Compile Include="Receipt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SavyDBDataSet1.xsd</DependentUpon>
+      <DependentUpon>Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SavyPOS_DBDataSet.Designer.cs">
+    <Compile Include="SavyPOS_DBFinalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SavyPOS_DBDataSet.xsd</DependentUpon>
+      <DependentUpon>SavyPOS_DBFinalDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
     <Compile Include="Supplier_Detail.cs">
@@ -105,6 +125,12 @@
     <Compile Include="Supplier_List.Designer.cs">
       <DependentUpon>Supplier_List.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction.Designer.cs">
+      <DependentUpon>Transaction.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Brand_Details.resx">
       <DependentUpon>Brand_Details.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,8 +140,14 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product_Detail.resx">
       <DependentUpon>Product_Detail.cs</DependentUpon>
@@ -133,11 +165,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Receipt.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplier_Detail.resx">
       <DependentUpon>Supplier_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier_List.resx">
       <DependentUpon>Supplier_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction.resx">
+      <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,27 +187,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SavyDBDataSet1.xsc">
-      <DependentUpon>SavyDBDataSet1.xsd</DependentUpon>
+    <None Include="SavyPOS_DBFinalDataSet.xsc">
+      <DependentUpon>SavyPOS_DBFinalDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SavyDBDataSet1.xsd">
+    <None Include="SavyPOS_DBFinalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SavyDBDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>SavyPOS_DBFinalDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SavyDBDataSet1.xss">
-      <DependentUpon>SavyDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="SavyPOS_DBDataSet.xsc">
-      <DependentUpon>SavyPOS_DBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SavyPOS_DBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SavyPOS_DBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SavyPOS_DBDataSet.xss">
-      <DependentUpon>SavyPOS_DBDataSet.xsd</DependentUpon>
+    <None Include="SavyPOS_DBFinalDataSet.xss">
+      <DependentUpon>SavyPOS_DBFinalDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +207,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\800x470.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\162-1628700_pluspoint-point-of-sale-and-stock-control-software.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

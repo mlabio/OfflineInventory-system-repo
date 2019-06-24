@@ -39,35 +39,6 @@ namespace Savy_App
             loadRecords();
         }
 
-        private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!e.RowIndex.Equals(-1))
-            {
-                int i = e.RowIndex;//get the Row Index             
-                DataGridViewRow row = dgv_chart.Rows[i];
-
-                lbl_brand_id.Text = row.Cells[0].Value.ToString();
-
-                if (lbl_brand_id.Text != "")
-                {
-                    Record = new SQL();
-                    dt = new DataTable();
-                    dt = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + Convert.ToInt32(lbl_brand_id.Text));
-                    lbl_brand_name.Text = dt.Rows[0]["brandName"].ToString();
-                    lbl_b_description.Text = dt.Rows[0]["brandDescription"].ToString();
-                    lbl_b_status.Text = dt.Rows[0]["brandStatus"].ToString() == "1" ? "Active" : "Not Active";
-                }
-                else
-                {
-                    clearBrandFields();
-                }
-
-            }
-            else
-            {
-                //Do Nothing if somebody clicked the header (just to catch the error of this part)
-            }
-        }
         public void clearBrandFields()
         {
             lbl_brand_name.Text = "Brand Name";
@@ -138,6 +109,36 @@ namespace Savy_App
                     //Do nothing
                     //this.Close();
                 }
+            }
+        }
+
+        private void dgv_chart_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!e.RowIndex.Equals(-1))
+            {
+                int i = e.RowIndex;//get the Row Index             
+                DataGridViewRow row = dgv_chart.Rows[i];
+
+                lbl_brand_id.Text = row.Cells[0].Value.ToString();
+
+                if (lbl_brand_id.Text != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    dt = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + Convert.ToInt32(lbl_brand_id.Text));
+                    lbl_brand_name.Text = dt.Rows[0]["brandName"].ToString();
+                    lbl_b_description.Text = dt.Rows[0]["brandDescription"].ToString();
+                    lbl_b_status.Text = dt.Rows[0]["brandStatus"].ToString() == "1" ? "Active" : "Not Active";
+                }
+                else
+                {
+                    clearBrandFields();
+                }
+
+            }
+            else
+            {
+                //Do Nothing if somebody clicked the header (just to catch the error of this part)
             }
         }
 

@@ -22,9 +22,7 @@ namespace Savy_App
         {
             con.Close();
         }
-
-
-        //Get
+        //Fetch
         public DataTable SELECT_STATEMENT(String query)
         {
             con.Open();

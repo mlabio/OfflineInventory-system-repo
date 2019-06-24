@@ -40,54 +40,6 @@ namespace Savy_App
             loadRecords();
         }
 
-        private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!e.RowIndex.Equals(-1))
-            {
-                int i = e.RowIndex;//get the Row Index             
-                DataGridViewRow row = dgv_chart.Rows[i];
-
-                lbl_product_id.Text = row.Cells[0].Value.ToString();
-
-                if (lbl_product_id.Text != "")
-                {
-                    Record = new SQL();
-                    dt = new DataTable();
-                    dt = Record.SELECT_STATEMENT("SELECT * FROM Products where productId = " + Convert.ToInt32(lbl_product_id.Text));
-                    lbl_product_name.Text = dt.Rows[0]["productName"].ToString();
-                    lbl_p_description.Text = dt.Rows[0]["productDescription"].ToString();
-                    lbl_p_price.Text = dt.Rows[0]["productPrice"].ToString();
-                    lbl_p_quantity.Text = dt.Rows[0]["productQty"].ToString();
-                    lbl_p_SKU.Text = dt.Rows[0]["productSKU"].ToString();
-                    lbl_p_availability.Text = dt.Rows[0]["productStatus"].ToString() == "1" ? "True" : "False";
-                    brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
-                    supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
-                    if (supplierId != 0)
-                    {
-                        Record = new SQL();
-                        dt2 = new DataTable();
-                        dt2 = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + supplierId);
-                        lbl_p_supplier.Text = dt2.Rows[0]["supplierName"].ToString();
-                    }
-                    if (brandId != 0)
-                    {
-                        Record = new SQL();
-                        dt2 = new DataTable();
-                        dt2 = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + brandId);
-                        lbl_p_brand.Text = dt2.Rows[0]["brandName"].ToString();
-                    }
-                }
-                else
-                {
-                    clearProductFields();
-                }
-
-            }
-            else
-            {
-                //Do Nothing if somebody clicked the header (just to catch the error of this part)
-            }
-        }
         public void clearProductFields()
         {
             lbl_product_name.Text = "Product Name";
@@ -113,7 +65,7 @@ namespace Savy_App
             dgv_chart.Columns[3].Visible = false;
             dgv_chart.Columns[4].HeaderText = "SKU";
             dgv_chart.Columns[5].HeaderText = "Price";
-            dgv_chart.Columns[6].HeaderText = "Quantity";
+            dgv_chart.Columns[6].HeaderText = "Stock";
             dgv_chart.Columns[7].Visible = false;
             dgv_chart.Columns[8].Visible = false;
             dgv_chart.Columns[9].Visible = false;
@@ -163,6 +115,55 @@ namespace Savy_App
                 h.Show();
 
                 this.Close();
+            }
+        }
+
+        private void dgv_chart_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!e.RowIndex.Equals(-1))
+            {
+                int i = e.RowIndex;//get the Row Index             
+                DataGridViewRow row = dgv_chart.Rows[i];
+
+                lbl_product_id.Text = row.Cells[0].Value.ToString();
+
+                if (lbl_product_id.Text != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    dt = Record.SELECT_STATEMENT("SELECT * FROM Products where productId = " + Convert.ToInt32(lbl_product_id.Text));
+                    lbl_product_name.Text = dt.Rows[0]["productName"].ToString();
+                    lbl_p_description.Text = dt.Rows[0]["productDescription"].ToString();
+                    lbl_p_price.Text = dt.Rows[0]["productPrice"].ToString();
+                    lbl_p_quantity.Text = dt.Rows[0]["productQty"].ToString();
+                    lbl_p_SKU.Text = dt.Rows[0]["productSKU"].ToString();
+                    lbl_p_availability.Text = dt.Rows[0]["productStatus"].ToString() == "1" ? "True" : "False";
+                    brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
+                    supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
+                    if (supplierId != 0)
+                    {
+                        Record = new SQL();
+                        dt2 = new DataTable();
+                        dt2 = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + supplierId);
+                        lbl_p_supplier.Text = dt2.Rows[0]["supplierName"].ToString();
+                    }
+                    if (brandId != 0)
+                    {
+                        Record = new SQL();
+                        dt2 = new DataTable();
+                        dt2 = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + brandId);
+                        lbl_p_brand.Text = dt2.Rows[0]["brandName"].ToString();
+                    }
+                }
+                else
+                {
+                    clearProductFields();
+                }
+
+            }
+            else
+            {
+                //Do Nothing if somebody clicked the header (just to catch the error of this part)
             }
         }
 

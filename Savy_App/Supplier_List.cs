@@ -39,38 +39,6 @@ namespace Savy_App
             loadRecords();
         }
 
-        private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!e.RowIndex.Equals(-1))
-            {
-                int i = e.RowIndex;//get the Row Index             
-                DataGridViewRow row = dgv_chart.Rows[i];
-
-                lbl_supplier_id.Text = row.Cells[0].Value.ToString();
-
-                if (lbl_supplier_id.Text != "")
-                {
-                    Record = new SQL();
-                    dt = new DataTable();
-                    dt = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + Convert.ToInt32(lbl_supplier_id.Text));
-                    lbl_supplier_name.Text = dt.Rows[0]["supplierName"].ToString();
-                    lbl_s_address.Text = dt.Rows[0]["supplierAddress"].ToString();
-                    lbl_s_description.Text = dt.Rows[0]["supplierDescription"].ToString();
-                    lbl_s_phone.Text = dt.Rows[0]["supplierPhone"].ToString();
-                    lbl_s_contactperson.Text = dt.Rows[0]["supplierContactPerson"].ToString();
-                    lbl_s_status.Text = dt.Rows[0]["supplierStatus"].ToString() == "1"? "Active": "Not Active";
-                }
-                else
-                {
-                    clearSupplierFields();
-                }
-                
-            }
-            else
-            {
-                //Do Nothing if somebody clicked the header (just to catch the error of this part)
-            }
-        }
         public void clearSupplierFields()
         {
             lbl_supplier_name.Text = "Supplier Name";
@@ -156,6 +124,39 @@ namespace Savy_App
             string delete_record = "DELETE FROM Products WHERE supplierId = " + Convert.ToInt32(lbl_supplier_id.Text);
             Record.CUD_STATEMENT(delete_record);
             MessageBox.Show("Products under this supplier are successfully deleted!");
+        }
+
+        private void dgv_chart_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!e.RowIndex.Equals(-1))
+            {
+                int i = e.RowIndex;//get the Row Index             
+                DataGridViewRow row = dgv_chart.Rows[i];
+
+                lbl_supplier_id.Text = row.Cells[0].Value.ToString();
+
+                if (lbl_supplier_id.Text != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    dt = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + Convert.ToInt32(lbl_supplier_id.Text));
+                    lbl_supplier_name.Text = dt.Rows[0]["supplierName"].ToString();
+                    lbl_s_address.Text = dt.Rows[0]["supplierAddress"].ToString();
+                    lbl_s_description.Text = dt.Rows[0]["supplierDescription"].ToString();
+                    lbl_s_phone.Text = dt.Rows[0]["supplierPhone"].ToString();
+                    lbl_s_contactperson.Text = dt.Rows[0]["supplierContactPerson"].ToString();
+                    lbl_s_status.Text = dt.Rows[0]["supplierStatus"].ToString() == "1" ? "Active" : "Not Active";
+                }
+                else
+                {
+                    clearSupplierFields();
+                }
+
+            }
+            else
+            {
+                //Do Nothing if somebody clicked the header (just to catch the error of this part)
+            }
         }
 
     }

@@ -121,5 +121,10 @@ namespace Savy_App
                 }
             }
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

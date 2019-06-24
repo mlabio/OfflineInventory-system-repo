@@ -38,19 +38,37 @@ namespace Savy_App
 
             //Populate brand
             dt = getBrands("All"); //ALL
-            for (int counter = 0; counter < dt.Rows.Count; counter++)
+
+            if (dt.Rows.Count == 0)
             {
-                string brandName = dt.Rows[counter]["brandName"].ToString();
-                this.cmb_brand.Items.Add(brandName);
+                MessageBox.Show("No Brands!");
+                this.Close();
             }
+            else
+            {
+                for (int counter = 0; counter < dt.Rows.Count; counter++)
+                {
+                    string brandName = dt.Rows[counter]["brandName"].ToString();
+                    this.cmb_brand.Items.Add(brandName);
+                }
+            }
+            
 
             dt = getSuppliers("All"); //ALL
-            for (int counter = 0; counter < dt.Rows.Count; counter++)
+            if (dt.Rows.Count == 0)
             {
-                string supplierName = dt.Rows[counter]["supplierName"].ToString();
-                this.cmb_supplier.Items.Add(supplierName);
+                MessageBox.Show("No Suppliers!");
+                this.Close();
             }
-
+            else
+            {
+                for (int counter = 0; counter < dt.Rows.Count; counter++)
+                {
+                    string supplierName = dt.Rows[counter]["supplierName"].ToString();
+                    this.cmb_supplier.Items.Add(supplierName);
+                }
+            }
+            
             if (lbl_product_id.Text == "")
             {
                 clearProductFields();
@@ -198,16 +216,6 @@ namespace Savy_App
             return brandName;
         }
 
-        private void select_image_btn_Click(object sender, EventArgs e)
-        {
-            //OpenFileDialog opnfd = new OpenFileDialog();
-            //opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
-            //if (opnfd.ShowDialog() == DialogResult.OK)
-            //{
-            //    product_image.Image = new Bitmap(opnfd.FileName);
-            //}
-            
-        }
         //public string ImageToBase64(Image image, System.Drawing.Imaging.ImageFormat format)
         //{
         //    using (MemoryStream ms = new MemoryStream())

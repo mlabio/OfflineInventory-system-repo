@@ -73,9 +73,39 @@ namespace Savy_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _162_1628700_pluspoint_point_of_sale_and_stock_control_software {
+            get {
+                object obj = ResourceManager.GetObject("162-1628700_pluspoint-point-of-sale-and-stock-control-software", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _800x470 {
             get {
                 object obj = ResourceManager.GetObject("800x470", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Header {
+            get {
+                object obj = ResourceManager.GetObject("Header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ivory {
+            get {
+                object obj = ResourceManager.GetObject("ivory", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -13,90 +13,22 @@ namespace Savy_App
     public partial class MDI : Form
     {
         private int childFormNumber = 0;
-
+        Dashboard dash;
+        Brand_List brand;
+        Product_List product;
+        Supplier_List supplier;
+        Transaction transaction;
         public MDI()
         {
             InitializeComponent();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
-        }
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
-        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
 
         private void MDI_Load(object sender, EventArgs e)
         {
-           
+            //dash = new Dashboard();
+            //dash.MdiParent = this;
+            //dash.Show();
         }
 
         private void menu_logout_Click(object sender, EventArgs e)
@@ -106,23 +38,66 @@ namespace Savy_App
 
         private void menu_brands_Click(object sender, EventArgs e)
         {
-            Brand_List h = new Brand_List();
-            h.MdiParent = this;
-            h.Show();
+            //dash.Close();
+            //brand.Close();
+            //product.Close();
+            //supplier.Close();
+            //transaction.Close();
+            brand = new Brand_List();
+            brand.MdiParent = this;
+            brand.Show();
         }
 
         private void menu_products_Click(object sender, EventArgs e)
         {
-            Product_List h = new Product_List();
-            h.MdiParent = this;
-            h.Show();
+            //dash.Close();
+            //brand.Close();
+            //product.Close();
+            //supplier.Close();
+            //transaction.Close();
+            product = new Product_List();
+            product.MdiParent = this;
+            product.Show();
         }
 
         private void menu_suppliers_Click(object sender, EventArgs e)
         {
-            Supplier_List h = new Supplier_List();
-            h.MdiParent = this;
-            h.Show();
+            //dash.Close();
+            //brand.Close();
+            //product.Close();
+            //supplier.Close();
+            //transaction.Close();
+            supplier = new Supplier_List();
+            supplier.MdiParent = this;
+            supplier.Show();
+        }
+
+        private void menu_dashboard_Click(object sender, EventArgs e)
+        {
+            //dash.Close();
+            //brand.Close();
+            //product.Close();
+            //supplier.Close();
+            //transaction.Close();
+            dash = new Dashboard();
+            dash.MdiParent = this;
+        }
+
+        private void menu_orders_Click_1(object sender, EventArgs e)
+        {
+            //dash.Close();
+            //brand.Close();
+            //product.Close();
+            //supplier.Close();
+            //transaction.Close();
+            transaction = new Transaction();
+            transaction.MdiParent = this;
+            transaction.Show();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized; 
         }
     }
 }
