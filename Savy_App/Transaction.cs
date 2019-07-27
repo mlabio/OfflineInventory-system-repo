@@ -14,9 +14,10 @@ namespace Savy_App
     {
         SQL Record;
         DataTable dt, dt2, dt3;
-        string lbl_product_id = "", lbl_product_to_remove = "", lbl_cart_id = "";
+        string lbl_product_id = "", lbl_cart_id = "";
         int count = 0;
         int rowIndex = -1;
+        int discount_type = 0;
         public Transaction()
         {
             InitializeComponent();
@@ -29,30 +30,66 @@ namespace Savy_App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            if (textBox1.Text != "" && txt_qty.Text != "")
             {
-                count = count + 1;
-                btn_savetransaction.Enabled = true;
-                btn_clear.Enabled = true;
-                //dtg_cart.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_discount.Text, txt_qty.Text, textBox1.Text);
-                foreach (DataGridViewRow row in this.dtg_cart.Rows)
+                if (radioButton1.Checked == false && txt_discount.Text != "")
                 {
-                    if (row.Cells[1].Value.ToString().Equals(textBox1.Text))
+                    count = count + 1;
+                    btn_savetransaction.Enabled = true;
+                    btn_clear.Enabled = true;
+                    //dtg_cart.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_discount.Text, txt_qty.Text, textBox1.Text);
+                    foreach (DataGridViewRow row in this.dtg_cart.Rows)
                     {
-                        rowIndex = row.Index;
-                        //this.dt.Rows.RemoveAt(rowIndex);
+                        if (row.Cells[1].Value.ToString().Equals(textBox1.Text))
+                        {
+                            rowIndex = row.Index;
+                            //this.dt.Rows.RemoveAt(rowIndex);
+                        }
                     }
+                    if (rowIndex == -1)
+                    {
+                        dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_qty.Text, discount_type, txt_discount.Text, textBox1.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Product already exists in your cart.");
+                    }
+                    clearFields();
                 }
-                if (rowIndex == -1)
+                else if (radioButton1.Checked == true)
                 {
-                    dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_discount.Text, txt_qty.Text, textBox1.Text);
+                    count = count + 1;
+                    btn_savetransaction.Enabled = true;
+                    btn_clear.Enabled = true;
+                    //dtg_cart.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_discount.Text, txt_qty.Text, textBox1.Text);
+                    foreach (DataGridViewRow row in this.dtg_cart.Rows)
+                    {
+                        if (row.Cells[1].Value.ToString().Equals(textBox1.Text))
+                        {
+                            rowIndex = row.Index;
+                            //this.dt.Rows.RemoveAt(rowIndex);
+                        }
+                    }
+                    if (rowIndex == -1)
+                    {
+                        dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_qty.Text, discount_type, 0, textBox1.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Product already exists in your cart.");
+                    }
+                    clearFields();
+
                 }
-                else
-                {
-                    MessageBox.Show("Product already exists in your cart.");
-                }
+                
+                
+                
             }
-            clearFields();
+            else
+            {
+                MessageBox.Show("Incomplete Information.");
+            }
+            
             
         }
         public void clearFields()
@@ -98,11 +135,20 @@ namespace Savy_App
             dt3.Columns.Add("Price");
             dt3.Columns.Add("Stock");
             dt3.Columns.Add("Qty");
+            dt3.Columns.Add("Discount Type");
             dt3.Columns.Add("Discount");
             dt3.Columns.Add("Id");
             dtg_cart.DataSource = dt3;
 
-            dtg_cart.Columns[5].Visible = false;
+            dtg_cart.Columns[6].Visible = false;
+
+            if (dt.Rows.Count > 0)
+            {
+                textBox1.Text = dt.Rows[0]["productId"].ToString();
+                txt_product.Text = dt.Rows[0]["productName"].ToString();
+                txt_stock.Text = dt.Rows[0]["productQty"].ToString();
+                txt_price.Text = dt.Rows[0]["productPrice"].ToString();
+            }
         }
 
         public void clearCart()
@@ -114,8 +160,9 @@ namespace Savy_App
             dtg_cart.Columns[1].HeaderText = "Price";
             dtg_cart.Columns[2].HeaderText = "Stock";
             dtg_cart.Columns[3].HeaderText = "Qty";
-            dtg_cart.Columns[4].HeaderText = "Discount";
-            dtg_cart.Columns[5].Visible = false;
+            dtg_cart.Columns[4].HeaderText = "Discount Type";
+            dtg_cart.Columns[5].HeaderText = "Discount";
+            dtg_cart.Columns[6].Visible = false;
         }
 
         private void dtg_cart_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -148,26 +195,46 @@ namespace Savy_App
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void dtg_products_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear you cart?", "Warning!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (!e.RowIndex.Equals(-1))
             {
-                count = 0;
-                btn_savetransaction.Enabled = false;
-                btn_clear.Enabled = false;
-                clearCart();
+                int i = e.RowIndex;//get the Row Index             
+                DataGridViewRow row = dtg_products.Rows[i];
+
+                lbl_product_id = row.Cells[0].Value.ToString();
+                textBox1.Text = dt.Rows[0]["productId"].ToString();
+
+                if (lbl_product_id != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    dt = Record.SELECT_STATEMENT("SELECT * FROM Products where productStatus = 1 AND productId = " + Convert.ToInt32(lbl_product_id));
+                    txt_product.Text = dt.Rows[0]["productName"].ToString();
+                    txt_stock.Text = dt.Rows[0]["productQty"].ToString();
+                    txt_price.Text = dt.Rows[0]["productPrice"].ToString();
+                }
+                else
+                {
+                    clearFields();
+                }
 
             }
-            else if (dialogResult == DialogResult.No)
+            else
             {
-                //Do nothing
-                //this.Close();
+                //Do Nothing if somebody clicked the header (just to catch the error of this part)
             }
-            
         }
 
-        private void btn_add_Click(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("productName LIKE '%{0}%'", txt_search.Text);
+            dtg_products.DataSource = dv;
+        }
+
+        private void btn_savetransaction_Click(object sender, EventArgs e)
         {
             if (count == 0)
             {
@@ -187,7 +254,7 @@ namespace Savy_App
 
                 Record.CUD_STATEMENT(insert_statement);
                 MessageBox.Show("Transaction created successfully!");
-                
+
                 //GET THE inventory_delivery_id of the inventory request
                 string test = "SELECT TOP 1 * from Transactions WHERE isPaid = 0 and isDeleted = 0 ORDER BY CONVERT(DATETIME,CREATE_DATE,20) DESC";
                 dt2 = Record.SELECT_STATEMENT(test);
@@ -203,17 +270,36 @@ namespace Savy_App
                     string productPrice = (string)dtg_cart[1, i].Value;
                     string productStock = (string)dtg_cart[2, i].Value;
                     string productQty = (string)dtg_cart[3, i].Value;
-                    string productDiscount = (string)dtg_cart[4, i].Value;
-                    string productId = (string)dtg_cart[5, i].Value;
-                    float discountedPrice = float.Parse(productQty) * (float.Parse(productPrice) / (float.Parse(productDiscount) / 100));
-                    totalAmount += discountedPrice;
+                    string productDiscountType = (string)dtg_cart[4, i].Value;
+                    string productDiscount = (string)dtg_cart[5, i].Value;
+                    string productId = (string)dtg_cart[6, i].Value;
+                    float discountedPrice = 0;
+                    if (productDiscountType != "-1")
+                    {
+                        if (productDiscountType == "0")
+                        {
+                            discountedPrice = float.Parse(productQty) * (float.Parse(productPrice) - float.Parse(productDiscount));
+                            
+                        }
+                        else if (productDiscountType == "1")
+                        {
+                            discountedPrice = float.Parse(productQty) * (float.Parse(productPrice) / (float.Parse(productDiscount) / 100));
+                        }
+                    }
+                    else
+                    {
+                        discountedPrice = 0;
+                    }
+
+                    totalAmount = totalAmount + discountedPrice;
 
                     //SAVING SA DATABASE - creation of inventory delivery items
                     String insert_prod_transaction =
-                        "INSERT INTO TransactionProducts(productId, discountPercent, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE)"
+                        "INSERT INTO TransactionProducts(productId, discount, isPercent, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE)"
                         + "VALUES("
                         + Convert.ToInt32(productId) + ", "
                         + float.Parse(productDiscount) + ","
+                        + Convert.ToInt32(productDiscountType) + ","
                         + float.Parse(productPrice) + ","
                         + discountedPrice + ","
                         + Convert.ToInt32(productQty) + ","
@@ -228,9 +314,9 @@ namespace Savy_App
                 Record.CUD_STATEMENT(update_trans_statement);
 
                 Payment h = new Payment();
-                h.txt_transactionId.Text = tran_id.ToString();
+                h.txt_Id.Text = tran_id.ToString();
                 h.MdiParent = MdiParent;
-                
+
                 totalAmount = 0;
                 count = 0;
                 //clearCart();
@@ -240,34 +326,62 @@ namespace Savy_App
             }
         }
 
-        private void dtg_products_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_clear_Click(object sender, EventArgs e)
         {
-            if (!e.RowIndex.Equals(-1))
+            if (count > 0)
             {
-                int i = e.RowIndex;//get the Row Index             
-                DataGridViewRow row = dtg_products.Rows[i];
-
-                lbl_product_id = row.Cells[0].Value.ToString();
-                textBox1.Text = dt.Rows[0]["productId"].ToString();
-
-                if (lbl_product_id != "")
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear you cart?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    Record = new SQL();
-                    dt = new DataTable();
-                    dt = Record.SELECT_STATEMENT("SELECT * FROM Products where productId = " + Convert.ToInt32(lbl_product_id));
-                    txt_product.Text = dt.Rows[0]["productName"].ToString();
-                    txt_stock.Text = dt.Rows[0]["productQty"].ToString();
-                    txt_price.Text = dt.Rows[0]["productPrice"].ToString();
-                }
-                else
-                {
-                    clearFields();
-                }
+                    count = 0;
+                    btn_savetransaction.Enabled = false;
+                    btn_clear.Enabled = false;
+                    clearCart();
 
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
             }
             else
             {
-                //Do Nothing if somebody clicked the header (just to catch the error of this part)
+                MessageBox.Show("You cart is empty!");
+            }
+        }
+
+        private void rb_peso_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_peso.Checked == true)
+            {
+                rb_percent.Checked = false;
+                radioButton1.Checked = false;
+                txt_discount.Enabled = true;
+                discount_type = 0;
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked == true)
+            {
+                rb_percent.Checked = false;
+                rb_peso.Checked = false;
+                txt_discount.Enabled = false;
+                discount_type = -1;
+                txt_discount.Text = "";
+            }
+        }
+
+        private void rb_percent_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_percent.Checked == true)
+            {
+                radioButton1.Checked = false;
+                rb_peso.Checked = false;
+                txt_discount.Enabled = true;
+                discount_type = 1;
             }
         }
     }

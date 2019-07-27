@@ -19,7 +19,12 @@ namespace Savy_App
             Record = new SQL();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
             string query = ("SELECT * from Users WHERE userName = '" + tbUser.Text + "' and userPassword = '" + tbPass.Text + "'");
             DataTable dt = new DataTable();
@@ -30,7 +35,7 @@ namespace Savy_App
                 string username = dt.Rows[0]["userName"].ToString();
                 string password = dt.Rows[0]["userPassword"].ToString();
 
-                MessageBox.Show("Welcome! ", "POS Application System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Welcome! ", "POS Application System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MDI mainForm = new MDI();
                 this.Hide();
                 mainForm.Show();
@@ -39,11 +44,6 @@ namespace Savy_App
             {
                 MessageBox.Show("Invalid Username/Password.", "Incorrect Login Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

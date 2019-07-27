@@ -67,6 +67,19 @@ namespace Savy_App
             dgv_chart.Columns[7].HeaderText = "Contact Person";
             dgv_chart.Columns[8].Visible = false;
             dgv_chart.Columns[9].Visible = false;
+
+            lbl_num_items.Text = dt.Rows.Count.ToString();
+
+            if (dt.Rows.Count > 0)
+            {
+                lbl_supplier_id.Text = dt.Rows[0]["supplierId"].ToString();
+                lbl_supplier_name.Text = dt.Rows[0]["supplierName"].ToString();
+                lbl_s_address.Text = dt.Rows[0]["supplierAddress"].ToString();
+                lbl_s_description.Text = dt.Rows[0]["supplierDescription"].ToString();
+                lbl_s_phone.Text = dt.Rows[0]["supplierPhone"].ToString();
+                lbl_s_contactperson.Text = dt.Rows[0]["supplierContactPerson"].ToString();
+                lbl_s_status.Text = dt.Rows[0]["supplierStatus"].ToString() == "1" ? "Active" : "Not Active";
+            }
         }
 
         private void btn_edit_Click(object sender, EventArgs e)

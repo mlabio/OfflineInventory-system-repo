@@ -14,6 +14,7 @@ namespace Savy_App
     {
         SQL Record;
         DataTable dt;
+
         public Brand_List()
         {
             InitializeComponent();
@@ -61,6 +62,16 @@ namespace Savy_App
             dgv_chart.Columns[3].Visible = false;
             dgv_chart.Columns[4].Visible = false;
             dgv_chart.Columns[5].Visible = false;
+
+            lbl_num_items.Text = dt.Rows.Count.ToString();
+
+            if (dt.Rows.Count > 0)
+            {
+                lbl_brand_name.Text = dt.Rows[0]["brandName"].ToString();
+                lbl_b_description.Text = dt.Rows[0]["brandDescription"].ToString();
+                lbl_b_status.Text = dt.Rows[0]["brandStatus"].ToString() == "1" ? "Active" : "Not Active";
+                lbl_brand_id.Text = dt.Rows[0]["brandId"].ToString();
+            }
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
@@ -112,7 +123,8 @@ namespace Savy_App
             }
         }
 
-        private void dgv_chart_CellClick_1(object sender, DataGridViewCellEventArgs e)
+
+        private void dgv_chart_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (!e.RowIndex.Equals(-1))
             {

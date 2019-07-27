@@ -66,7 +66,7 @@
             // 
             this.txt_phone.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_phone.ForeColor = System.Drawing.Color.Black;
-            this.txt_phone.Location = new System.Drawing.Point(127, 166);
+            this.txt_phone.Location = new System.Drawing.Point(127, 159);
             this.txt_phone.Multiline = true;
             this.txt_phone.Name = "txt_phone";
             this.txt_phone.Size = new System.Drawing.Size(381, 23);
@@ -77,9 +77,8 @@
             this.txt_address.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_address.ForeColor = System.Drawing.Color.Black;
             this.txt_address.Location = new System.Drawing.Point(127, 70);
-            this.txt_address.Multiline = true;
             this.txt_address.Name = "txt_address";
-            this.txt_address.Size = new System.Drawing.Size(381, 45);
+            this.txt_address.Size = new System.Drawing.Size(381, 23);
             this.txt_address.TabIndex = 3;
             this.txt_address.Validating += new System.ComponentModel.CancelEventHandler(this.addressValidator);
             // 
@@ -99,7 +98,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(70, 224);
+            this.label7.Location = new System.Drawing.Point(70, 217);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 16);
             this.label7.TabIndex = 316;
@@ -110,7 +109,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(58, 168);
+            this.label9.Location = new System.Drawing.Point(58, 161);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 16);
             this.label9.TabIndex = 311;
@@ -121,7 +120,7 @@
             this.panel_status.Controls.Add(this.rb_inactive);
             this.panel_status.Controls.Add(this.rb_active);
             this.panel_status.ForeColor = System.Drawing.Color.Black;
-            this.panel_status.Location = new System.Drawing.Point(127, 217);
+            this.panel_status.Location = new System.Drawing.Point(127, 210);
             this.panel_status.Name = "panel_status";
             this.panel_status.Size = new System.Drawing.Size(162, 30);
             this.panel_status.TabIndex = 309;
@@ -158,22 +157,22 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(61, 72);
+            this.label3.Location = new System.Drawing.Point(52, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 16);
+            this.label3.Size = new System.Drawing.Size(71, 16);
             this.label3.TabIndex = 296;
-            this.label3.Text = "Address :";
+            this.label3.Text = "Address* :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 46);
+            this.label1.Location = new System.Drawing.Point(11, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 16);
+            this.label1.Size = new System.Drawing.Size(112, 16);
             this.label1.TabIndex = 291;
-            this.label1.Text = "Supplier Name :";
+            this.label1.Text = "Supplier Name* :";
             // 
             // label5
             // 
@@ -189,14 +188,16 @@
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_close.BackgroundImage = global::Savy_App.Properties.Resources._200x40_red;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_close.ForeColor = System.Drawing.Color.Black;
-            this.btn_close.Location = new System.Drawing.Point(566, 2);
-            this.btn_close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_close.Location = new System.Drawing.Point(559, 4);
+            this.btn_close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(26, 27);
+            this.btn_close.Size = new System.Drawing.Size(35, 35);
             this.btn_close.TabIndex = 20;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
@@ -223,9 +224,9 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(36, 32);
+            this.groupBox2.Location = new System.Drawing.Point(36, 45);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 292);
+            this.groupBox2.Size = new System.Drawing.Size(526, 279);
             this.groupBox2.TabIndex = 429;
             this.groupBox2.TabStop = false;
             // 
@@ -233,10 +234,10 @@
             // 
             this.txt_description.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_description.ForeColor = System.Drawing.Color.Black;
-            this.txt_description.Location = new System.Drawing.Point(127, 118);
+            this.txt_description.Location = new System.Drawing.Point(127, 99);
             this.txt_description.Multiline = true;
             this.txt_description.Name = "txt_description";
-            this.txt_description.Size = new System.Drawing.Size(381, 45);
+            this.txt_description.Size = new System.Drawing.Size(381, 54);
             this.txt_description.TabIndex = 4;
             // 
             // label6
@@ -244,7 +245,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(40, 120);
+            this.label6.Location = new System.Drawing.Point(40, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 16);
             this.label6.TabIndex = 324;
@@ -255,7 +256,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(28, 257);
+            this.label4.Location = new System.Drawing.Point(22, 250);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 16);
             this.label4.TabIndex = 323;
@@ -266,7 +267,7 @@
             this.panel_type.Controls.Add(this.rb_person);
             this.panel_type.Controls.Add(this.rb_store);
             this.panel_type.ForeColor = System.Drawing.Color.Black;
-            this.panel_type.Location = new System.Drawing.Point(127, 251);
+            this.panel_type.Location = new System.Drawing.Point(127, 244);
             this.panel_type.Name = "panel_type";
             this.panel_type.Size = new System.Drawing.Size(162, 30);
             this.panel_type.TabIndex = 322;
@@ -302,7 +303,7 @@
             // 
             this.txt_contact_person.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_contact_person.ForeColor = System.Drawing.Color.Black;
-            this.txt_contact_person.Location = new System.Drawing.Point(127, 191);
+            this.txt_contact_person.Location = new System.Drawing.Point(127, 184);
             this.txt_contact_person.Multiline = true;
             this.txt_contact_person.Name = "txt_contact_person";
             this.txt_contact_person.Size = new System.Drawing.Size(381, 23);
@@ -313,7 +314,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(20, 194);
+            this.label2.Location = new System.Drawing.Point(20, 187);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 16);
             this.label2.TabIndex = 320;
@@ -335,7 +336,8 @@
             // btn_save
             // 
             this.btn_save.BackColor = System.Drawing.Color.Green;
-            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_save.BackgroundImage = global::Savy_App.Properties.Resources._200x40_green;
+            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_save.FlatAppearance.BorderSize = 0;
             this.btn_save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
             this.btn_save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
@@ -373,15 +375,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Savy_App.Properties.Resources._800x470;
+            this.BackgroundImage = global::Savy_App.Properties.Resources._600x380;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(600, 382);
             this.Controls.Add(this.lbl_supplier_id);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Supplier_Detail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier_Detail";

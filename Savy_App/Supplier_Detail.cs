@@ -36,53 +36,63 @@ namespace Savy_App
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled) && lbl_supplier_id.Text == "")
+            if (txt_name.Text == "" || txt_address.Text == "")
             {
-                Record = new SQL();
-                dt = new DataTable();
-                int status = rb_active.Checked == true ? 1 : 0;
-                int type = rb_store.Checked == true ? 1 : 0;
-
-                String insert_statement =
-                    "INSERT INTO Suppliers(supplierName, supplierDescription, supplierStatus, supplierAddress, supplierType, supplierPhone, supplierContactPerson, CREATE_DATE, LAST_UPDATE_DATE)"
-                    + "VALUES('"
-                    + txt_name.Text + "','"
-                    + txt_description.Text + "',"
-                    + status + ",'"
-                    + txt_address.Text + "',"
-                    + type + ",'"
-                    + txt_phone.Text + "','"
-                    + txt_contact_person.Text + "','"
-                    + DateTime.Now.ToShortDateString() + "','"
-                    + DateTime.Now.ToShortDateString() + "')";
-
-                Record.CUD_STATEMENT(insert_statement);
-                MessageBox.Show("Supplier Detail saved successfully!");
-                Record.close();
-                clearSupplierFields();
+                MessageBox.Show("Empty required field/s");
             }
-            else if (ValidateChildren(ValidationConstraints.Enabled) && lbl_supplier_id.Text != "")
+            else
             {
-                Record = new SQL();
-                dt = new DataTable();
-                int status = rb_active.Checked == true ? 1 : 0;
-                int type = rb_store.Checked == true ? 1 : 0;
-                String update_statement = "UPDATE Suppliers set supplierName = '" + txt_name.Text
-                    + "', supplierDescription = '" + txt_description.Text
-                    + "', supplierAddress = '" + txt_address.Text
-                    + "', supplierPhone = '" + txt_phone.Text
-                    + "', supplierContactPerson = '" + txt_contact_person.Text
-                    + "', supplierStatus = " + status
-                    + ", supplierType = " + type
-                    + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
-                    + "' where supplierId = " + Convert.ToInt32(lbl_supplier_id.Text)
-                    + "";
+                //if (ValidateChildren(ValidationConstraints.Enabled) && lbl_supplier_id.Text == "")
+                if (lbl_supplier_id.Text == "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    int status = rb_active.Checked == true ? 1 : 0;
+                    int type = rb_store.Checked == true ? 1 : 0;
 
-                Record.CUD_STATEMENT(update_statement);
-                MessageBox.Show("Supplier Detail updated successfully!");
-                Record.close();
-                clearSupplierFields();
+                    String insert_statement =
+                        "INSERT INTO Suppliers(supplierName, supplierDescription, supplierStatus, supplierAddress, supplierType, supplierPhone, supplierContactPerson, CREATE_DATE, LAST_UPDATE_DATE)"
+                        + "VALUES('"
+                        + txt_name.Text + "','"
+                        + txt_description.Text + "',"
+                        + status + ",'"
+                        + txt_address.Text + "',"
+                        + type + ",'"
+                        + txt_phone.Text + "','"
+                        + txt_contact_person.Text + "','"
+                        + DateTime.Now.ToShortDateString() + "','"
+                        + DateTime.Now.ToShortDateString() + "')";
+
+                    Record.CUD_STATEMENT(insert_statement);
+                    MessageBox.Show("Supplier Detail saved successfully!");
+                    Record.close();
+                    clearSupplierFields();
+                }
+                //else if (ValidateChildren(ValidationConstraints.Enabled) && lbl_supplier_id.Text != "")
+                else if (lbl_supplier_id.Text != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    int status = rb_active.Checked == true ? 1 : 0;
+                    int type = rb_store.Checked == true ? 1 : 0;
+                    String update_statement = "UPDATE Suppliers set supplierName = '" + txt_name.Text
+                        + "', supplierDescription = '" + txt_description.Text
+                        + "', supplierAddress = '" + txt_address.Text
+                        + "', supplierPhone = '" + txt_phone.Text
+                        + "', supplierContactPerson = '" + txt_contact_person.Text
+                        + "', supplierStatus = " + status
+                        + ", supplierType = " + type
+                        + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
+                        + "' where supplierId = " + Convert.ToInt32(lbl_supplier_id.Text)
+                        + "";
+
+                    Record.CUD_STATEMENT(update_statement);
+                    MessageBox.Show("Supplier Detail updated successfully!");
+                    Record.close();
+                    clearSupplierFields();
+                }
             }
+           
         }
 
         public void clearSupplierFields()
@@ -102,31 +112,31 @@ namespace Savy_App
 
         private void nameValidator(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name.Text))
-            {
-                e.Cancel = true;
-                txt_name.Focus();
-                nameError.SetError(txt_name, "Please Enter Supplier Name");
-            }
-            else
-            {
-                e.Cancel = false;
-                nameError.SetError(txt_name, null);
-            }
+            //if (string.IsNullOrEmpty(txt_name.Text))
+            //{
+            //    e.Cancel = true;
+            //    txt_name.Focus();
+            //    nameError.SetError(txt_name, "Please Enter Supplier Name");
+            //}
+            //else
+            //{
+            //    e.Cancel = false;
+            //    nameError.SetError(txt_name, null);
+            //}
         }
 
         private void addressValidator(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrEmpty(txt_address.Text))
-            {
-                e.Cancel = true;
-                addressError.SetError(txt_address, "Please Enter Address Name");
-            }
-            else
-            {
-                e.Cancel = false;
-                addressError.SetError(txt_address, null);
-            }
+            //if(string.IsNullOrEmpty(txt_address.Text))
+            //{
+            //    e.Cancel = true;
+            //    addressError.SetError(txt_address, "Please Enter Address Name");
+            //}
+            //else
+            //{
+            //    e.Cancel = false;
+            //    addressError.SetError(txt_address, null);
+            //}
         }
 
         private void Supplier_Detail_Load(object sender, EventArgs e)

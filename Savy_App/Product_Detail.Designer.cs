@@ -98,11 +98,11 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(68, 89);
+            this.label9.Location = new System.Drawing.Point(62, 89);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 16);
+            this.label9.Size = new System.Drawing.Size(52, 16);
             this.label9.TabIndex = 311;
-            this.label9.Text = "Price :";
+            this.label9.Text = "Price* :";
             // 
             // panel4
             // 
@@ -120,23 +120,24 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(61, 114);
+            this.label2.Location = new System.Drawing.Point(55, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 16);
+            this.label2.Size = new System.Drawing.Size(59, 16);
             this.label2.TabIndex = 308;
-            this.label2.Text = "Stocks :";
+            this.label2.Text = "Stocks* :";
             // 
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.IndianRed;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_close.ForeColor = System.Drawing.Color.Black;
-            this.btn_close.Location = new System.Drawing.Point(567, 2);
+            this.btn_close.Location = new System.Drawing.Point(556, 5);
             this.btn_close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(26, 27);
+            this.btn_close.Size = new System.Drawing.Size(35, 35);
             this.btn_close.TabIndex = 20;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
@@ -157,19 +158,19 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(74, 66);
+            this.label3.Location = new System.Drawing.Point(68, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 16);
+            this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 296;
-            this.label3.Text = "SKU :";
+            this.label3.Text = "SKU* :";
             // 
             // cmb_brand
             // 
             this.cmb_brand.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmb_brand.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_brand.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_brand.ForeColor = System.Drawing.Color.Black;
-            this.cmb_brand.FormattingEnabled = true;
             this.cmb_brand.Location = new System.Drawing.Point(120, 188);
             this.cmb_brand.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_brand.Name = "cmb_brand";
@@ -181,11 +182,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(18, 41);
+            this.label1.Location = new System.Drawing.Point(6, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 16);
+            this.label1.Size = new System.Drawing.Size(108, 16);
             this.label1.TabIndex = 291;
-            this.label1.Text = "Product Name :";
+            this.label1.Text = "Product Name* :";
             // 
             // dtp_date
             // 
@@ -223,9 +224,9 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(38, 32);
+            this.groupBox2.Location = new System.Drawing.Point(38, 46);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 308);
+            this.groupBox2.Size = new System.Drawing.Size(526, 281);
             this.groupBox2.TabIndex = 425;
             this.groupBox2.TabStop = false;
             // 
@@ -233,9 +234,9 @@
             // 
             this.cmb_supplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmb_supplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_supplier.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_supplier.ForeColor = System.Drawing.Color.Black;
-            this.cmb_supplier.FormattingEnabled = true;
             this.cmb_supplier.Location = new System.Drawing.Point(120, 214);
             this.cmb_supplier.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_supplier.Name = "cmb_supplier";
@@ -298,22 +299,22 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(51, 216);
+            this.label6.Location = new System.Drawing.Point(43, 216);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 16);
+            this.label6.Size = new System.Drawing.Size(73, 16);
             this.label6.TabIndex = 315;
-            this.label6.Text = "Supplier :";
+            this.label6.Text = "Supplier* :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(64, 191);
+            this.label4.Location = new System.Drawing.Point(56, 191);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 16);
+            this.label4.Size = new System.Drawing.Size(59, 16);
             this.label4.TabIndex = 314;
-            this.label4.Text = "Brand :";
+            this.label4.Text = "Brand* :";
             // 
             // label5
             // 
@@ -329,16 +330,17 @@
             // btn_save
             // 
             this.btn_save.BackColor = System.Drawing.Color.Green;
-            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_save.BackgroundImage = global::Savy_App.Properties.Resources._200x40_green;
+            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_save.FlatAppearance.BorderSize = 0;
             this.btn_save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
             this.btn_save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.White;
-            this.btn_save.Location = new System.Drawing.Point(38, 343);
+            this.btn_save.Location = new System.Drawing.Point(38, 330);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(526, 28);
+            this.btn_save.Size = new System.Drawing.Size(526, 40);
             this.btn_save.TabIndex = 11;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = false;
@@ -359,13 +361,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Savy_App.Properties.Resources._800x470;
+            this.BackgroundImage = global::Savy_App.Properties.Resources._600x380;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(600, 382);
             this.Controls.Add(this.lbl_product_id);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_save);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Product_Detail";

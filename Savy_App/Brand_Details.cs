@@ -30,43 +30,52 @@ namespace Savy_App
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled) && lbl_brand_id.Text == "")
+            //if (ValidateChildren(ValidationConstraints.Enabled) && lbl_brand_id.Text == "")
+            if (txt_name.Text == "")
             {
-                Record = new SQL();
-                dt = new DataTable();
-                int status = rb_active.Checked == true ? 1 : 0;
-
-                String insert_statement =
-                    "INSERT INTO Brands(brandName, brandDescription, brandStatus, CREATE_DATE, LAST_UPDATE_DATE)"
-                    + "VALUES('"
-                    + txt_name.Text + "','"
-                    + txt_description.Text + "',"
-                    + status + ",'"
-                    + DateTime.Now.ToShortDateString() + "','"
-                    + DateTime.Now.ToShortDateString() + "')";
-
-                Record.CUD_STATEMENT(insert_statement);
-                MessageBox.Show("Brand Detail saved successfully!");
-                Record.close();
-                clearBrandFields();
+                MessageBox.Show("Brand Name is empty!");
             }
-            else if (ValidateChildren(ValidationConstraints.Enabled) && lbl_brand_id.Text != "")
+            else
             {
-                Record = new SQL();
-                dt = new DataTable();
-                int status = rb_active.Checked == true ? 1 : 0;
-                String update_statement = "UPDATE Brands set brandName = '" + txt_name.Text
-                    + "', brandDescription = '" + txt_description.Text
-                    + "', brandStatus = " + status
-                    + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
-                    + "' where brandId = " + Convert.ToInt32(lbl_brand_id.Text) 
-                    + "";
+                if (lbl_brand_id.Text == "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    int status = rb_active.Checked == true ? 1 : 0;
 
-                Record.CUD_STATEMENT(update_statement);
-                MessageBox.Show("Brand Detail updated successfully!");
-                Record.close();
-                clearBrandFields();
-            }
+                    String insert_statement =
+                        "INSERT INTO Brands(brandName, brandDescription, brandStatus, CREATE_DATE, LAST_UPDATE_DATE)"
+                        + "VALUES('"
+                        + txt_name.Text + "','"
+                        + txt_description.Text + "',"
+                        + status + ",'"
+                        + DateTime.Now.ToShortDateString() + "','"
+                        + DateTime.Now.ToShortDateString() + "')";
+
+                    Record.CUD_STATEMENT(insert_statement);
+                    MessageBox.Show("Brand Detail saved successfully!");
+                    Record.close();
+                    clearBrandFields();
+                }
+                //else if (ValidateChildren(ValidationConstraints.Enabled) && lbl_brand_id.Text != "")
+                else if (lbl_brand_id.Text != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    int status = rb_active.Checked == true ? 1 : 0;
+                    String update_statement = "UPDATE Brands set brandName = '" + txt_name.Text
+                        + "', brandDescription = '" + txt_description.Text
+                        + "', brandStatus = " + status
+                        + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
+                        + "' where brandId = " + Convert.ToInt32(lbl_brand_id.Text)
+                        + "";
+
+                    Record.CUD_STATEMENT(update_statement);
+                    MessageBox.Show("Brand Detail updated successfully!");
+                    Record.close();
+                    clearBrandFields();
+                }
+            }   
         }
 
         public void clearBrandFields()
@@ -81,17 +90,17 @@ namespace Savy_App
 
         private void brands_validation(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name.Text))
-            {
-                e.Cancel = true;
-                txt_name.Focus();
-                errorProvider1.SetError(txt_name, "Please Enter Brand Name");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txt_name, null);
-            }
+            //if (string.IsNullOrEmpty(txt_name.Text))
+            //{
+            //    e.Cancel = true;
+            //    txt_name.Focus();
+            //    errorProvider1.SetError(txt_name, "Please Enter Brand Name");
+            //}
+            //else
+            //{
+            //    e.Cancel = false;
+            //    errorProvider1.SetError(txt_name, null);
+            //}
         }
 
         private void Brand_Details_Load(object sender, EventArgs e)

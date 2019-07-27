@@ -52,14 +52,16 @@
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_close.BackgroundImage = global::Savy_App.Properties.Resources._200x40_red;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_close.ForeColor = System.Drawing.Color.Black;
-            this.btn_close.Location = new System.Drawing.Point(568, 2);
-            this.btn_close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_close.Location = new System.Drawing.Point(560, 4);
+            this.btn_close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(26, 27);
+            this.btn_close.Size = new System.Drawing.Size(35, 35);
             this.btn_close.TabIndex = 7;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
@@ -78,9 +80,9 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(39, 37);
+            this.groupBox2.Location = new System.Drawing.Point(39, 49);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 285);
+            this.groupBox2.Size = new System.Drawing.Size(526, 274);
             this.groupBox2.TabIndex = 420;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
@@ -92,7 +94,7 @@
             this.txt_description.Location = new System.Drawing.Point(116, 76);
             this.txt_description.Multiline = true;
             this.txt_description.Name = "txt_description";
-            this.txt_description.Size = new System.Drawing.Size(381, 160);
+            this.txt_description.Size = new System.Drawing.Size(381, 154);
             this.txt_description.TabIndex = 3;
             // 
             // txt_name
@@ -111,18 +113,18 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(26, 51);
+            this.label9.Location = new System.Drawing.Point(14, 52);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 16);
+            this.label9.Size = new System.Drawing.Size(98, 16);
             this.label9.TabIndex = 311;
-            this.label9.Text = "Brand Name :";
+            this.label9.Text = "Brand Name* :";
             // 
             // panel_status
             // 
             this.panel_status.Controls.Add(this.rb_inactive);
             this.panel_status.Controls.Add(this.rb_active);
             this.panel_status.ForeColor = System.Drawing.Color.Black;
-            this.panel_status.Location = new System.Drawing.Point(116, 242);
+            this.panel_status.Location = new System.Drawing.Point(115, 236);
             this.panel_status.Name = "panel_status";
             this.panel_status.Size = new System.Drawing.Size(163, 30);
             this.panel_status.TabIndex = 309;
@@ -170,7 +172,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(59, 249);
+            this.label8.Location = new System.Drawing.Point(58, 243);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 16);
             this.label8.TabIndex = 310;
@@ -203,7 +205,8 @@
             // btn_save
             // 
             this.btn_save.BackColor = System.Drawing.Color.Green;
-            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_save.BackgroundImage = global::Savy_App.Properties.Resources._200x40_green;
+            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_save.FlatAppearance.BorderSize = 0;
             this.btn_save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
             this.btn_save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
@@ -237,15 +240,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Savy_App.Properties.Resources._800x470;
+            this.BackgroundImage = global::Savy_App.Properties.Resources._600x380;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(600, 382);
+            this.ClientSize = new System.Drawing.Size(600, 380);
             this.Controls.Add(this.lbl_brand_id);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_save);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Brand_Details";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Brand_Details";

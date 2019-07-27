@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using CrystalDecisions.ReportSource;
+using CrystalDecisions.Web;
+using CrystalDecisions.Windows.Forms;
 
 namespace Savy_App
 {
     public partial class Payment : Form
     {
         SQL Record;
-        DataTable dt,dt2,dt3;
+        DataTable dt;
         public Payment()
         {
             InitializeComponent();
@@ -23,34 +26,60 @@ namespace Savy_App
 
         private void btn_close_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (txt_Id.Text != "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel your transaction?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Record = new SQL();
+
+                    String update_trans_statement = "UPDATE Transactions SET isDeleted=1, LAST_UPDATE_DATE='" + DateTime.Now.ToShortDateString() + "' WHERE transactionId=" + Convert.ToInt32(txt_Id.Text) + "";
+                    Record.CUD_STATEMENT(update_trans_statement);
+
+                    MessageBox.Show("Transaction is cancelled!");
+                    Record.close();
+                    this.Close();
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
         public void loadRecords()
         {
             Record = new SQL();
             dt = new DataTable();
-            dt = Record.SELECT_STATEMENT("SELECT * FROM TransactionProducts WHERE transactionId="+ Convert.ToInt32(txt_transactionId.Text) +"");
+            dt = Record.SELECT_STATEMENT("SELECT p.ProductName, tp.* FROM TransactionProducts tp LEFT JOIN Transactions t ON t.transactionId = tp.transactionId LEFT JOIN Products p ON p.productId = tp.productId WHERE t.isDeleted = 0 AND t.transactionId="+ Convert.ToInt32(txt_Id.Text) +"");
             dtg_products.DataSource = dt;
             txt_change.Text = "0.00";
 
-            //dtg_products.Columns[0].Visible = false;
-            //dtg_products.Columns[1].HeaderText = "Product Name";
-            //dtg_products.Columns[2].HeaderText = "Description";
-            //dtg_products.Columns[3].Visible = false;
-            //dtg_products.Columns[4].HeaderText = "SKU";
-            //dtg_products.Columns[5].Visible = false;
-            //dtg_products.Columns[6].Visible = false;
-            //dtg_products.Columns[7].Visible = false;
-            //dtg_products.Columns[8].Visible = false;
-            //dtg_products.Columns[9].Visible = false;
-            //dtg_products.Columns[10].Visible = false;
-            //dtg_products.Columns[11].Visible = false;
+            dtg_products.Columns[0].HeaderText = "Product Name";
+            dtg_products.Columns[1].Visible = false;
+            dtg_products.Columns[2].Visible = false;
+            dtg_products.Columns[3].Visible = false;
+            dtg_products.Columns[4].Visible = false;
+            dtg_products.Columns[5].HeaderText = "Original Price";
+            dtg_products.Columns[6].HeaderText = "Discounted Price";
+            dtg_products.Columns[7].HeaderText = "Quantity";
+            dtg_products.Columns[8].Visible = false;
+            dtg_products.Columns[9].HeaderText = "Returned Item";
+            dtg_products.Columns[10].Visible = false;
+            dtg_products.Columns[11].Visible = false;
 
-            //dt2 = new DataTable();
-            //dt2 = Record.SELECT_STATEMENT("SELECT * FROM Transactions WHERE transactionId=" + Convert.ToInt32(txt_transactionId.Text) + "");
-            //string transactionId = dt2.Rows[0]["transactionId"].ToString();
-            //txt_transnum.Text = transactionId;
-            //txt_totalamount.Text = dt2.Rows[0]["totalAmount"].ToString();
+            Record = new SQL();
+            dt = new DataTable();
+            dt = Record.SELECT_STATEMENT("SELECT * FROM Transactions where isPaid = 0 AND transactionId = " + Convert.ToInt32(txt_Id.Text));
+            txt_transnum.Text = dt.Rows[0]["transactionId"].ToString();
+            txt_totalamount.Text = dt.Rows[0]["totalAmount"].ToString();
+
         }
 
         private void Payment_Load(object sender, EventArgs e)
@@ -60,15 +89,13 @@ namespace Savy_App
 
         private void btn_savetransaction_Click(object sender, EventArgs e)
         {
-            if (txt_payment.Text!= "")
+            if (txt_payment.Text != "" && float.Parse(txt_payment.Text) >= float.Parse(txt_totalamount.Text))
             {
                 Record = new SQL();
-                dt = new DataTable();
-
                 String insert_statement =
                     "INSERT INTO Payment(transactionId, totalAmount, amountPaid, change, CREATE_DATE, LAST_UPDATE_DATE)"
                     + "VALUES("
-                    + txt_transactionId.Text + ","
+                    + txt_Id.Text + ","
                     + txt_totalamount.Text + ","
                     + txt_payment.Text + ","
                     + txt_change.Text + ",'"
@@ -76,48 +103,153 @@ namespace Savy_App
                     + DateTime.Now.ToShortDateString() + "')";
 
                 Record.CUD_STATEMENT(insert_statement);
+
+                String update_trans_statement = "UPDATE Transactions SET isPaid=1, LAST_UPDATE_DATE='" + DateTime.Now.ToShortDateString() + "' WHERE transactionId=" + Convert.ToInt32(txt_Id.Text) + "";
+                Record.CUD_STATEMENT(update_trans_statement);
+
                 MessageBox.Show("Payment saved successfully!");
                 Record.close();
 
+                btn_clear.Enabled = false;
+                btn_savetransaction.Enabled = false;
                 showReport();
-                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Payment is less than Total Amount for this transaction!");
             }
             
         }
 
         private void txt_payment_TextChanged(object sender, EventArgs e)
         {
-            float diff = float.Parse(txt_totalamount.Text) - float.Parse(txt_payment.Text);
-            if (diff < 0)
+            if (txt_totalamount.Text != "")
             {
-                txt_change.Text = "0.00";
+                float diff = float.Parse(txt_payment.Text) - float.Parse(txt_totalamount.Text);
+                if (diff < 0)
+                {
+                    txt_change.Text = "0.00";
+                }
+                else
+                {
+                    txt_change.Text = diff.ToString();
+                }
             }
-            else
-            {
-                txt_change.Text = diff.ToString();
-            }
+            
         }
         public void showReport()
         {
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("Receipt.rpt");
+            TableLogOnInfos crtableLogoninfos = new TableLogOnInfos();
+            TableLogOnInfo crtableLogoninfo = new TableLogOnInfo();
+            ConnectionInfo crConnectionInfo = new ConnectionInfo();
+            Tables CrTables ;
 
-            ParameterFieldDefinitions crParameterFieldDefinitions ;
-            ParameterFieldDefinition crParameterFieldDefinition ;
-            ParameterValues crParameterValues = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+            cryRpt.Load("D:" + "\\" + "OfflineInventory-system-repo" + "\\" + "Savy_App" + "\\" + "Receipt.rpt");
 
-            crParameterDiscreteValue.Value = txt_transactionId.Text;
-            crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition = crParameterFieldDefinitions["transId"];
-            crParameterValues = crParameterFieldDefinition.CurrentValues;
+            crConnectionInfo.ServerName = "ASUS-PC"+ "\\" +"MSSQL";
+            crConnectionInfo.DatabaseName = "SavyPOS_DB";
+            crConnectionInfo.UserID = "sa";
+            crConnectionInfo.Password = "sql";
+            crConnectionInfo.IntegratedSecurity = true;
+            cryRpt.SetParameterValue("transId", txt_Id.Text);
 
-            crParameterValues.Clear();
-            crParameterValues.Add(crParameterDiscreteValue);
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+            CrTables = cryRpt.Database.Tables ;
+            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+            {
+                crtableLogoninfo = CrTable.LogOnInfo;
+                crtableLogoninfo.ConnectionInfo = crConnectionInfo;
+                CrTable.ApplyLogOnInfo(crtableLogoninfo);
+            }
 
+
+            //ParameterFieldDefinitions crParameterFieldDefinitions;
+            //ParameterFieldDefinition crParameterFieldDefinition;
+            //ParameterValues crParameterValues = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+
+            //crParameterDiscreteValue.Value = txt_Id.Text;
+            //crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition = crParameterFieldDefinitions["transId"];
+            //crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+            //crParameterValues.Clear();
+            //crParameterValues.Add(crParameterDiscreteValue);
+            //crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+            //cryRpt.SetDataSource(CrTables);
+  
             crv_1.ReportSource = cryRpt;
             crv_1.Refresh(); 
         }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            if (txt_Id.Text != "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel your transaction?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Record = new SQL();
+
+                    String update_trans_statement = "UPDATE Transactions SET isDeleted=1, LAST_UPDATE_DATE='" + DateTime.Now.ToShortDateString() + "' WHERE transactionId=" + Convert.ToInt32(txt_Id.Text) + "";
+                    Record.CUD_STATEMENT(update_trans_statement);
+
+                    MessageBox.Show("Transaction is cancelled!");
+                    Record.close();
+                    this.Close();
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Empty transaction!");
+            }
+        }
+
+        private void dtg_products_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!e.RowIndex.Equals(-1))
+            {
+                int i = e.RowIndex;//get the Row Index             
+                DataGridViewRow row = dtg_products.Rows[i];
+
+                //txt_Id.Text = row.Cells[0].Value.ToString();
+                txt_Id.Text = dt.Rows[0]["transactionId"].ToString();
+
+                if (txt_Id.Text != "")
+                {
+                    Record = new SQL();
+                    dt = new DataTable();
+                    dt = Record.SELECT_STATEMENT("SELECT * FROM Transactions where isPaid = 0 AND transactionId = " + Convert.ToInt32(txt_Id.Text));
+                    txt_transnum.Text = dt.Rows[0]["transactionId"].ToString();
+                    txt_totalamount.Text = dt.Rows[0]["totalAmount"].ToString();
+                    btn_savetransaction.Enabled = true;
+                    btn_clear.Enabled = true;
+                }
+                else
+                {
+                    clearFields();
+                }
+
+            }
+            else
+            {
+                //Do Nothing if somebody clicked the header (just to catch the error of this part)
+            }
+        }
+        public void clearFields()
+        {
+            txt_transnum.Text = "";
+            txt_Id.Text = "";
+            txt_totalamount.Text = "";
+            txt_payment.Text = "";
+            txt_change.Text = "";
+        }
+
     }
 }

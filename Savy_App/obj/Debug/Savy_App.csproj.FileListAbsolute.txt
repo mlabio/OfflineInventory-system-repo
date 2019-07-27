@@ -18,3 +18,5 @@ D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Supplier_List.resour
 D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Login.resources
 D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Transaction.resources
 D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.Payment.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.ViewTransactions.resources
+D:\OfflineInventory-system-repo\Savy_App\obj\Debug\Savy_App.ReturnProducts.resources

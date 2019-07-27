@@ -12,12 +12,12 @@ namespace Savy_App
 {
     public partial class MDI : Form
     {
-        private int childFormNumber = 0;
         Dashboard dash;
         Brand_List brand;
         Product_List product;
         Supplier_List supplier;
         Transaction transaction;
+        ViewTransactions record;
         public MDI()
         {
             InitializeComponent();
@@ -98,6 +98,13 @@ namespace Savy_App
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized; 
+        }
+
+        private void ts_past_trans_Click(object sender, EventArgs e)
+        {
+            record = new ViewTransactions();
+            record.MdiParent = this;
+            record.Show();
         }
     }
 }

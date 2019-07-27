@@ -15,7 +15,7 @@ namespace Savy_App
     {
         SQL Record;
         DataTable dt;
-        int product_status, product_id, brand_id, supplier_id;
+        int product_status, brand_id, supplier_id;
         public Product_Detail()
         {
             InitializeComponent();
@@ -83,6 +83,9 @@ namespace Savy_App
                 product_status = Convert.ToInt32(dt.Rows[0]["productStatus"].ToString());
                 brand_id = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
                 supplier_id = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
+                txt_price.Text = dt.Rows[0]["productPrice"].ToString();
+                txt_sku.Text = dt.Rows[0]["productSKU"].ToString();
+                txt_qty.Text = dt.Rows[0]["productQty"].ToString();
                 cmb_supplier.Text = getSpecificSupplier(supplier_id);
                 cmb_brand.Text = getSpecificBrand(brand_id);
                 if (product_status == 1)
@@ -95,60 +98,73 @@ namespace Savy_App
                     rb_active.Checked = false;
                     rb_inactive.Checked = true;
                 }
-                txt_price.Text = dt.Rows[0]["productPrice"].ToString();
-                txt_sku.Text = dt.Rows[0]["productSKU"].ToString();
-                txt_qty.Text = dt.Rows[0]["productQty"].ToString();
+                
 
             }
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            Record = new SQL();
-            dt = new DataTable();
-            int status = rb_active.Checked == true ? 1 : 0;
-            dt = getSuppliers(cmb_supplier.Text);
-            int supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
-            dt = getBrands(cmb_brand.Text);
-            int brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
-
-            String statement = "";
-            if (lbl_product_id.Text == "")
+            if(
+                txt_name.Text == ""||
+                txt_sku.Text == ""||
+                txt_price.Text == ""||
+                txt_qty.Text == ""||
+                cmb_brand.Text == ""||
+                cmb_supplier.Text == ""
+                )
             {
-                statement =
-                "INSERT INTO Products(productName, productDescription, productStatus, productSKU, productPrice, productQty, brandId, supplierId, CREATE_DATE, LAST_UPDATE_DATE)"
-                + " VALUES('"
-                + txt_name.Text + "','"
-                + txt_description.Text + "',"
-                + status + ",'"
-                + txt_sku.Text + "','"
-                + txt_price.Text + "',"
-                + Convert.ToInt32(txt_qty.Text) + ","
-                    //+ ImageToBase64(product_image.Image,System.Drawing.Imaging.ImageFormat.Png) + ","
-                + supplierId + ","
-                + brandId + ",'"
-                + DateTime.Now.ToShortDateString() + "','"
-                + DateTime.Now.ToShortDateString() + "')";
+                MessageBox.Show("Required fields are not completed.");
             }
             else
             {
-                statement = "UPDATE Products set productName = '" + txt_name.Text
-                    + "', productDescription = '" + txt_description.Text
-                    + "', productStatus = " + status
-                    + ", productSKU = '" + txt_sku.Text
-                    + "', productPrice = '" + txt_price.Text
-                    + "', productQty = " + Convert.ToInt32(txt_qty.Text)
-                    + ", brandId = " + brandId
-                    + ", supplierId = " + supplierId
-                    + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
-                    + "' where productId = " + Convert.ToInt32(lbl_product_id.Text)
-                    + "";
-            }
+                Record = new SQL();
+                dt = new DataTable();
+                int status = rb_active.Checked == true ? 1 : 0;
+                dt = getSuppliers(cmb_supplier.Text);
+                int supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
+                dt = getBrands(cmb_brand.Text);
+                int brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
 
-            Record.CUD_STATEMENT(statement);
-            MessageBox.Show("Supplier Detail saved successfully!");
-            Record.close();
-            clearProductFields();
+                String statement = "";
+                if (lbl_product_id.Text == "")
+                {
+                    statement =
+                    "INSERT INTO Products(productName, productDescription, productStatus, productSKU, productPrice, productQty, brandId, supplierId, CREATE_DATE, LAST_UPDATE_DATE)"
+                    + " VALUES('"
+                    + txt_name.Text + "','"
+                    + txt_description.Text + "',"
+                    + status + ",'"
+                    + txt_sku.Text + "','"
+                    + txt_price.Text + "',"
+                    + Convert.ToInt32(txt_qty.Text) + ","
+                        //+ ImageToBase64(product_image.Image,System.Drawing.Imaging.ImageFormat.Png) + ","
+                    + supplierId + ","
+                    + brandId + ",'"
+                    + DateTime.Now.ToShortDateString() + "','"
+                    + DateTime.Now.ToShortDateString() + "')";
+                }
+                else
+                {
+                    statement = "UPDATE Products set productName = '" + txt_name.Text
+                        + "', productDescription = '" + txt_description.Text
+                        + "', productStatus = " + status
+                        + ", productSKU = '" + txt_sku.Text
+                        + "', productPrice = '" + txt_price.Text
+                        + "', productQty = " + Convert.ToInt32(txt_qty.Text)
+                        + ", brandId = " + brandId
+                        + ", supplierId = " + supplierId
+                        + ", LAST_UPDATE_DATE = '" + DateTime.Now.ToShortDateString()
+                        + "' where productId = " + Convert.ToInt32(lbl_product_id.Text)
+                        + "";
+                }
+
+                Record.CUD_STATEMENT(statement);
+                MessageBox.Show("Supplier Detail saved successfully!");
+                Record.close();
+                clearProductFields();
+            }
+            
         }
         public void clearProductFields()
         {

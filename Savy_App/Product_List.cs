@@ -71,6 +71,35 @@ namespace Savy_App
             dgv_chart.Columns[9].Visible = false;
             dgv_chart.Columns[10].Visible = false;
             dgv_chart.Columns[11].Visible = false;
+
+            lbl_num_items.Text = dt.Rows.Count.ToString();
+
+            if (dt.Rows.Count > 0)
+            {
+                lbl_product_id.Text = dt.Rows[0]["productId"].ToString();
+                lbl_product_name.Text = dt.Rows[0]["productName"].ToString();
+                lbl_p_description.Text = dt.Rows[0]["productDescription"].ToString();
+                lbl_p_price.Text = dt.Rows[0]["productPrice"].ToString();
+                lbl_p_quantity.Text = dt.Rows[0]["productQty"].ToString();
+                lbl_p_SKU.Text = dt.Rows[0]["productSKU"].ToString();
+                lbl_p_availability.Text = dt.Rows[0]["productStatus"].ToString() == "1" ? "True" : "False";
+                brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
+                supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
+                if (supplierId != 0)
+                {
+                    Record = new SQL();
+                    dt2 = new DataTable();
+                    dt2 = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + supplierId);
+                    lbl_p_supplier.Text = dt2.Rows[0]["supplierName"].ToString();
+                }
+                if (brandId != 0)
+                {
+                    Record = new SQL();
+                    dt2 = new DataTable();
+                    dt2 = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + brandId);
+                    lbl_p_brand.Text = dt2.Rows[0]["brandName"].ToString();
+                }
+            }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

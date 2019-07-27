@@ -107,6 +107,18 @@
       <DependentUpon>Receipt.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ReturnProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnProducts.Designer.cs">
+      <DependentUpon>ReturnProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewTransactions.Designer.cs">
+      <DependentUpon>ViewTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="SavyPOS_DBFinalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,6 +181,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Receipt.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReturnProducts.resx">
+      <DependentUpon>ReturnProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewTransactions.resx">
+      <DependentUpon>ViewTransactions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplier_Detail.resx">
       <DependentUpon>Supplier_Detail.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,11 +208,11 @@
     <None Include="SavyPOS_DBFinalDataSet.xsc">
       <DependentUpon>SavyPOS_DBFinalDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SavyPOS_DBFinalDataSet.xsd">
+    <EmbeddedResource Include="SavyPOS_DBFinalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SavyPOS_DBFinalDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
+    </EmbeddedResource>
     <None Include="SavyPOS_DBFinalDataSet.xss">
       <DependentUpon>SavyPOS_DBFinalDataSet.xsd</DependentUpon>
     </None>
@@ -219,6 +237,45 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Header2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\600x380_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\600x380_login1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200x40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\900x635.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200x40_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200x40_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200x40_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\290x530_detail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\290x530_detail2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\900x635_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\600x380.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\600x380_login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
