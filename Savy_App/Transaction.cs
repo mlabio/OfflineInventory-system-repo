@@ -121,7 +121,7 @@ namespace Savy_App
         {
             Record = new SQL();
             dt = new DataTable();
-            dt = Record.SELECT_STATEMENT("SELECT * FROM Products");
+            dt = Record.SELECT_STATEMENT("SELECT * FROM Products WHERE productQty > 0");
 
             dtg_products.DataSource = dt;
 
@@ -214,7 +214,7 @@ namespace Savy_App
                 DataGridViewRow row = dtg_products.Rows[i];
 
                 lbl_product_id = row.Cells[0].Value.ToString();
-                textBox1.Text = dt.Rows[0]["productId"].ToString();
+                textBox1.Text = row.Cells[0].Value.ToString();
 
                 if (lbl_product_id != "")
                 {
@@ -422,6 +422,17 @@ namespace Savy_App
             if (System.Text.RegularExpressions.Regex.IsMatch(txt_qty.Text, "  ^ [0-9]"))
             {
                 txt_qty.Text = "";
+            }
+            else
+            {
+                if (txt_stock.Text != "" && txt_qty.Text != "")
+                {
+                    float diff = float.Parse(txt_stock.Text) - float.Parse(txt_qty.Text);
+                    if (diff < 0)
+                    {
+                        txt_qty.Text = "";
+                    }
+                }
             }
         }
     }
