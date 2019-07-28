@@ -1958,8 +1958,6 @@ namespace Savy_App {
             
             private global::System.Data.DataColumn columnproductId;
             
-            private global::System.Data.DataColumn columndiscountPercent;
-            
             private global::System.Data.DataColumn columnoriginalPrice;
             
             private global::System.Data.DataColumn columndiscountedPrice;
@@ -1971,6 +1969,12 @@ namespace Savy_App {
             private global::System.Data.DataColumn columnCREATE_DATE;
             
             private global::System.Data.DataColumn columnLAST_UPDATE_DATE;
+            
+            private global::System.Data.DataColumn columndiscount;
+            
+            private global::System.Data.DataColumn columnisPercent;
+            
+            private global::System.Data.DataColumn columnisReturned;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2018,14 +2022,6 @@ namespace Savy_App {
             public global::System.Data.DataColumn productIdColumn {
                 get {
                     return this.columnproductId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn discountPercentColumn {
-                get {
-                    return this.columndiscountPercent;
                 }
             }
             
@@ -2079,6 +2075,30 @@ namespace Savy_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn discountColumn {
+                get {
+                    return this.columndiscount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn isPercentColumn {
+                get {
+                    return this.columnisPercent;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn isReturnedColumn {
+                get {
+                    return this.columnisReturned;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2114,18 +2134,20 @@ namespace Savy_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TransactionProductsRow AddTransactionProductsRow(int productId, double discountPercent, double originalPrice, double discountedPrice, int quantity, int transactionId, string CREATE_DATE, string LAST_UPDATE_DATE) {
+            public TransactionProductsRow AddTransactionProductsRow(int productId, double originalPrice, double discountedPrice, int quantity, int transactionId, string CREATE_DATE, string LAST_UPDATE_DATE, double discount, int isPercent, int isReturned) {
                 TransactionProductsRow rowTransactionProductsRow = ((TransactionProductsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         productId,
-                        discountPercent,
                         originalPrice,
                         discountedPrice,
                         quantity,
                         transactionId,
                         CREATE_DATE,
-                        LAST_UPDATE_DATE};
+                        LAST_UPDATE_DATE,
+                        discount,
+                        isPercent,
+                        isReturned};
                 rowTransactionProductsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTransactionProductsRow);
                 return rowTransactionProductsRow;
@@ -2157,13 +2179,15 @@ namespace Savy_App {
             internal void InitVars() {
                 this.columntransProdId = base.Columns["transProdId"];
                 this.columnproductId = base.Columns["productId"];
-                this.columndiscountPercent = base.Columns["discountPercent"];
                 this.columnoriginalPrice = base.Columns["originalPrice"];
                 this.columndiscountedPrice = base.Columns["discountedPrice"];
                 this.columnquantity = base.Columns["quantity"];
                 this.columntransactionId = base.Columns["transactionId"];
                 this.columnCREATE_DATE = base.Columns["CREATE_DATE"];
                 this.columnLAST_UPDATE_DATE = base.Columns["LAST_UPDATE_DATE"];
+                this.columndiscount = base.Columns["discount"];
+                this.columnisPercent = base.Columns["isPercent"];
+                this.columnisReturned = base.Columns["isReturned"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2173,8 +2197,6 @@ namespace Savy_App {
                 base.Columns.Add(this.columntransProdId);
                 this.columnproductId = new global::System.Data.DataColumn("productId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductId);
-                this.columndiscountPercent = new global::System.Data.DataColumn("discountPercent", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndiscountPercent);
                 this.columnoriginalPrice = new global::System.Data.DataColumn("originalPrice", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnoriginalPrice);
                 this.columndiscountedPrice = new global::System.Data.DataColumn("discountedPrice", typeof(double), null, global::System.Data.MappingType.Element);
@@ -2187,6 +2209,12 @@ namespace Savy_App {
                 base.Columns.Add(this.columnCREATE_DATE);
                 this.columnLAST_UPDATE_DATE = new global::System.Data.DataColumn("LAST_UPDATE_DATE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLAST_UPDATE_DATE);
+                this.columndiscount = new global::System.Data.DataColumn("discount", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiscount);
+                this.columnisPercent = new global::System.Data.DataColumn("isPercent", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnisPercent);
+                this.columnisReturned = new global::System.Data.DataColumn("isReturned", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnisReturned);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columntransProdId}, true));
                 this.columntransProdId.AutoIncrement = true;
@@ -3996,22 +4024,6 @@ namespace Savy_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double discountPercent {
-                get {
-                    try {
-                        return ((double)(this[this.tableTransactionProducts.discountPercentColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'discountPercent\' in table \'TransactionProducts\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTransactionProducts.discountPercentColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double originalPrice {
                 get {
                     try {
@@ -4109,6 +4121,54 @@ namespace Savy_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double discount {
+                get {
+                    try {
+                        return ((double)(this[this.tableTransactionProducts.discountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'discount\' in table \'TransactionProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactionProducts.discountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int isPercent {
+                get {
+                    try {
+                        return ((int)(this[this.tableTransactionProducts.isPercentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'isPercent\' in table \'TransactionProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactionProducts.isPercentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int isReturned {
+                get {
+                    try {
+                        return ((int)(this[this.tableTransactionProducts.isReturnedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'isReturned\' in table \'TransactionProducts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactionProducts.isReturnedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsproductIdNull() {
                 return this.IsNull(this.tableTransactionProducts.productIdColumn);
             }
@@ -4117,18 +4177,6 @@ namespace Savy_App {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetproductIdNull() {
                 this[this.tableTransactionProducts.productIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsdiscountPercentNull() {
-                return this.IsNull(this.tableTransactionProducts.discountPercentColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetdiscountPercentNull() {
-                this[this.tableTransactionProducts.discountPercentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4201,6 +4249,42 @@ namespace Savy_App {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLAST_UPDATE_DATENull() {
                 this[this.tableTransactionProducts.LAST_UPDATE_DATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdiscountNull() {
+                return this.IsNull(this.tableTransactionProducts.discountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdiscountNull() {
+                this[this.tableTransactionProducts.discountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsisPercentNull() {
+                return this.IsNull(this.tableTransactionProducts.isPercentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetisPercentNull() {
+                this[this.tableTransactionProducts.isPercentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsisReturnedNull() {
+                return this.IsNull(this.tableTransactionProducts.isReturnedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetisReturnedNull() {
+                this[this.tableTransactionProducts.isReturnedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6269,23 +6353,23 @@ SELECT paymentId, transactionId, totalAmount, amountPaid, change, CREATE_DATE, L
             tableMapping.DataSetTable = "TransactionProducts";
             tableMapping.ColumnMappings.Add("transProdId", "transProdId");
             tableMapping.ColumnMappings.Add("productId", "productId");
-            tableMapping.ColumnMappings.Add("discountPercent", "discountPercent");
             tableMapping.ColumnMappings.Add("originalPrice", "originalPrice");
             tableMapping.ColumnMappings.Add("discountedPrice", "discountedPrice");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             tableMapping.ColumnMappings.Add("transactionId", "transactionId");
             tableMapping.ColumnMappings.Add("CREATE_DATE", "CREATE_DATE");
             tableMapping.ColumnMappings.Add("LAST_UPDATE_DATE", "LAST_UPDATE_DATE");
+            tableMapping.ColumnMappings.Add("discount", "discount");
+            tableMapping.ColumnMappings.Add("isPercent", "isPercent");
+            tableMapping.ColumnMappings.Add("isReturned", "isReturned");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TransactionProducts] WHERE (([transProdId] = @Original_transProdId) AND ((@IsNull_productId = 1 AND [productId] IS NULL) OR ([productId] = @Original_productId)) AND ((@IsNull_discountPercent = 1 AND [discountPercent] IS NULL) OR ([discountPercent] = @Original_discountPercent)) AND ((@IsNull_originalPrice = 1 AND [originalPrice] IS NULL) OR ([originalPrice] = @Original_originalPrice)) AND ((@IsNull_discountedPrice = 1 AND [discountedPrice] IS NULL) OR ([discountedPrice] = @Original_discountedPrice)) AND ((@IsNull_quantity = 1 AND [quantity] IS NULL) OR ([quantity] = @Original_quantity)) AND ((@IsNull_transactionId = 1 AND [transactionId] IS NULL) OR ([transactionId] = @Original_transactionId)) AND ((@IsNull_CREATE_DATE = 1 AND [CREATE_DATE] IS NULL) OR ([CREATE_DATE] = @Original_CREATE_DATE)) AND ((@IsNull_LAST_UPDATE_DATE = 1 AND [LAST_UPDATE_DATE] IS NULL) OR ([LAST_UPDATE_DATE] = @Original_LAST_UPDATE_DATE)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [TransactionProducts] WHERE (([transProdId] = @Original_transProdId) AND ((@IsNull_productId = 1 AND [productId] IS NULL) OR ([productId] = @Original_productId)) AND ((@IsNull_originalPrice = 1 AND [originalPrice] IS NULL) OR ([originalPrice] = @Original_originalPrice)) AND ((@IsNull_discountedPrice = 1 AND [discountedPrice] IS NULL) OR ([discountedPrice] = @Original_discountedPrice)) AND ((@IsNull_quantity = 1 AND [quantity] IS NULL) OR ([quantity] = @Original_quantity)) AND ((@IsNull_transactionId = 1 AND [transactionId] IS NULL) OR ([transactionId] = @Original_transactionId)) AND ((@IsNull_CREATE_DATE = 1 AND [CREATE_DATE] IS NULL) OR ([CREATE_DATE] = @Original_CREATE_DATE)) AND ((@IsNull_LAST_UPDATE_DATE = 1 AND [LAST_UPDATE_DATE] IS NULL) OR ([LAST_UPDATE_DATE] = @Original_LAST_UPDATE_DATE)) AND ((@IsNull_discount = 1 AND [discount] IS NULL) OR ([discount] = @Original_discount)) AND ((@IsNull_isPercent = 1 AND [isPercent] IS NULL) OR ([isPercent] = @Original_isPercent)) AND ((@IsNull_isReturned = 1 AND [isReturned] IS NULL) OR ([isReturned] = @Original_isReturned)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_transProdId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transProdId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_productId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "productId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_productId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "productId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_discountPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountPercent", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_discountPercent", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountPercent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_originalPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "originalPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_originalPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "originalPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_discountedPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountedPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -6298,37 +6382,64 @@ SELECT paymentId, transactionId, totalAmount, amountPaid, change, CREATE_DATE, L
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CREATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CREATE_DATE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LAST_UPDATE_DATE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LAST_UPDATE_DATE", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LAST_UPDATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LAST_UPDATE_DATE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_discount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discount", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_discount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_isPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isPercent", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isPercent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_isReturned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isReturned", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isReturned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isReturned", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TransactionProducts] ([productId], [discountPercent], [originalPrice], [discountedPrice], [quantity], [transactionId], [CREATE_DATE], [LAST_UPDATE_DATE]) VALUES (@productId, @discountPercent, @originalPrice, @discountedPrice, @quantity, @transactionId, @CREATE_DATE, @LAST_UPDATE_DATE);
-SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE FROM TransactionProducts WHERE (transProdId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TransactionProducts] ([productId], [originalPrice], [discountedPrice], [quantity], [transactionId], [CREATE_DATE], [LAST_UPDATE_DATE], [discount], [isPercent], [isReturned]) VALUES (@productId, @originalPrice, @discountedPrice, @quantity, @transactionId, @CREATE_DATE, @LAST_UPDATE_DATE, @discount, @isPercent, @isReturned);
+SELECT transProdId, productId, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE, discount, isPercent, isReturned FROM TransactionProducts WHERE (transProdId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@productId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "productId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discountPercent", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountPercent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@originalPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "originalPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discountedPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountedPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transactionId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transactionId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CREATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CREATE_DATE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LAST_UPDATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LAST_UPDATE_DATE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isPercent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isReturned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isReturned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TransactionProducts] SET [productId] = @productId, [discountPercent] = @discountPercent, [originalPrice] = @originalPrice, [discountedPrice] = @discountedPrice, [quantity] = @quantity, [transactionId] = @transactionId, [CREATE_DATE] = @CREATE_DATE, [LAST_UPDATE_DATE] = @LAST_UPDATE_DATE WHERE (([transProdId] = @Original_transProdId) AND ((@IsNull_productId = 1 AND [productId] IS NULL) OR ([productId] = @Original_productId)) AND ((@IsNull_discountPercent = 1 AND [discountPercent] IS NULL) OR ([discountPercent] = @Original_discountPercent)) AND ((@IsNull_originalPrice = 1 AND [originalPrice] IS NULL) OR ([originalPrice] = @Original_originalPrice)) AND ((@IsNull_discountedPrice = 1 AND [discountedPrice] IS NULL) OR ([discountedPrice] = @Original_discountedPrice)) AND ((@IsNull_quantity = 1 AND [quantity] IS NULL) OR ([quantity] = @Original_quantity)) AND ((@IsNull_transactionId = 1 AND [transactionId] IS NULL) OR ([transactionId] = @Original_transactionId)) AND ((@IsNull_CREATE_DATE = 1 AND [CREATE_DATE] IS NULL) OR ([CREATE_DATE] = @Original_CREATE_DATE)) AND ((@IsNull_LAST_UPDATE_DATE = 1 AND [LAST_UPDATE_DATE] IS NULL) OR ([LAST_UPDATE_DATE] = @Original_LAST_UPDATE_DATE)));
-SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE FROM TransactionProducts WHERE (transProdId = @transProdId)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [TransactionProducts] SET [productId] = @productId, [originalPrice] = @ori" +
+                "ginalPrice, [discountedPrice] = @discountedPrice, [quantity] = @quantity, [trans" +
+                "actionId] = @transactionId, [CREATE_DATE] = @CREATE_DATE, [LAST_UPDATE_DATE] = @" +
+                "LAST_UPDATE_DATE, [discount] = @discount, [isPercent] = @isPercent, [isReturned]" +
+                " = @isReturned WHERE (([transProdId] = @Original_transProdId) AND ((@IsNull_prod" +
+                "uctId = 1 AND [productId] IS NULL) OR ([productId] = @Original_productId)) AND (" +
+                "(@IsNull_originalPrice = 1 AND [originalPrice] IS NULL) OR ([originalPrice] = @O" +
+                "riginal_originalPrice)) AND ((@IsNull_discountedPrice = 1 AND [discountedPrice] " +
+                "IS NULL) OR ([discountedPrice] = @Original_discountedPrice)) AND ((@IsNull_quant" +
+                "ity = 1 AND [quantity] IS NULL) OR ([quantity] = @Original_quantity)) AND ((@IsN" +
+                "ull_transactionId = 1 AND [transactionId] IS NULL) OR ([transactionId] = @Origin" +
+                "al_transactionId)) AND ((@IsNull_CREATE_DATE = 1 AND [CREATE_DATE] IS NULL) OR (" +
+                "[CREATE_DATE] = @Original_CREATE_DATE)) AND ((@IsNull_LAST_UPDATE_DATE = 1 AND [" +
+                "LAST_UPDATE_DATE] IS NULL) OR ([LAST_UPDATE_DATE] = @Original_LAST_UPDATE_DATE))" +
+                " AND ((@IsNull_discount = 1 AND [discount] IS NULL) OR ([discount] = @Original_d" +
+                "iscount)) AND ((@IsNull_isPercent = 1 AND [isPercent] IS NULL) OR ([isPercent] =" +
+                " @Original_isPercent)) AND ((@IsNull_isReturned = 1 AND [isReturned] IS NULL) OR" +
+                " ([isReturned] = @Original_isReturned)));\r\nSELECT transProdId, productId, origin" +
+                "alPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE" +
+                ", discount, isPercent, isReturned FROM TransactionProducts WHERE (transProdId = " +
+                "@transProdId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@productId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "productId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discountPercent", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountPercent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@originalPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "originalPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discountedPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountedPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transactionId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transactionId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CREATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CREATE_DATE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LAST_UPDATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LAST_UPDATE_DATE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isPercent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isReturned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isReturned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_transProdId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transProdId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_productId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "productId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_productId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "productId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_discountPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountPercent", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_discountPercent", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountPercent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_originalPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "originalPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_originalPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "originalPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_discountedPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discountedPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -6341,6 +6452,12 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CREATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CREATE_DATE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LAST_UPDATE_DATE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LAST_UPDATE_DATE", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LAST_UPDATE_DATE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LAST_UPDATE_DATE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_discount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discount", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_discount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "discount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_isPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isPercent", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isPercent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isPercent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_isReturned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isReturned", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isReturned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isReturned", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transProdId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "transProdId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -6357,9 +6474,9 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, q" +
-                "uantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE FROM dbo.TransactionProduc" +
-                "ts";
+            this._commandCollection[0].CommandText = "SELECT transProdId, productId, originalPrice, discountedPrice, quantity, transact" +
+                "ionId, CREATE_DATE, LAST_UPDATE_DATE, discount, isPercent, isReturned FROM Trans" +
+                "actionProducts";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6420,7 +6537,7 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_transProdId, global::System.Nullable<int> Original_productId, global::System.Nullable<double> Original_discountPercent, global::System.Nullable<double> Original_originalPrice, global::System.Nullable<double> Original_discountedPrice, global::System.Nullable<int> Original_quantity, global::System.Nullable<int> Original_transactionId, string Original_CREATE_DATE, string Original_LAST_UPDATE_DATE) {
+        public virtual int Delete(int Original_transProdId, global::System.Nullable<int> Original_productId, global::System.Nullable<double> Original_originalPrice, global::System.Nullable<double> Original_discountedPrice, global::System.Nullable<int> Original_quantity, global::System.Nullable<int> Original_transactionId, string Original_CREATE_DATE, string Original_LAST_UPDATE_DATE, global::System.Nullable<double> Original_discount, global::System.Nullable<int> Original_isPercent, global::System.Nullable<int> Original_isReturned) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_transProdId));
             if ((Original_productId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -6430,61 +6547,77 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_discountPercent.HasValue == true)) {
+            if ((Original_originalPrice.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_discountPercent.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_originalPrice.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_originalPrice.HasValue == true)) {
+            if ((Original_discountedPrice.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_originalPrice.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_discountedPrice.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_discountedPrice.HasValue == true)) {
+            if ((Original_quantity.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_discountedPrice.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_quantity.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_quantity.HasValue == true)) {
+            if ((Original_transactionId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_quantity.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_transactionId.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_transactionId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_transactionId.Value));
-            }
-            else {
+            if ((Original_CREATE_DATE == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_CREATE_DATE == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_CREATE_DATE));
+            }
+            if ((Original_LAST_UPDATE_DATE == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_CREATE_DATE));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_LAST_UPDATE_DATE));
             }
-            if ((Original_LAST_UPDATE_DATE == null)) {
+            if ((Original_discount.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((double)(Original_discount.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
+            if ((Original_isPercent.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_isPercent.Value));
+            }
             else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_LAST_UPDATE_DATE));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_isReturned.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_isReturned.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6506,54 +6639,66 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> productId, global::System.Nullable<double> discountPercent, global::System.Nullable<double> originalPrice, global::System.Nullable<double> discountedPrice, global::System.Nullable<int> quantity, global::System.Nullable<int> transactionId, string CREATE_DATE, string LAST_UPDATE_DATE) {
+        public virtual int Insert(global::System.Nullable<int> productId, global::System.Nullable<double> originalPrice, global::System.Nullable<double> discountedPrice, global::System.Nullable<int> quantity, global::System.Nullable<int> transactionId, string CREATE_DATE, string LAST_UPDATE_DATE, global::System.Nullable<double> discount, global::System.Nullable<int> isPercent, global::System.Nullable<int> isReturned) {
             if ((productId.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(productId.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((discountPercent.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(discountPercent.Value));
+            if ((originalPrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(originalPrice.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((originalPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((double)(originalPrice.Value));
+            if ((discountedPrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((double)(discountedPrice.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((discountedPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(discountedPrice.Value));
+            if ((quantity.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(quantity.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((quantity.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(quantity.Value));
+            if ((transactionId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(transactionId.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((transactionId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(transactionId.Value));
-            }
-            else {
+            if ((CREATE_DATE == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((CREATE_DATE == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(CREATE_DATE));
+            }
+            if ((LAST_UPDATE_DATE == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(CREATE_DATE));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(LAST_UPDATE_DATE));
             }
-            if ((LAST_UPDATE_DATE == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            if ((discount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((double)(discount.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(LAST_UPDATE_DATE));
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((isPercent.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(isPercent.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((isReturned.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(isReturned.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6577,22 +6722,26 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     global::System.Nullable<int> productId, 
-                    global::System.Nullable<double> discountPercent, 
                     global::System.Nullable<double> originalPrice, 
                     global::System.Nullable<double> discountedPrice, 
                     global::System.Nullable<int> quantity, 
                     global::System.Nullable<int> transactionId, 
                     string CREATE_DATE, 
                     string LAST_UPDATE_DATE, 
+                    global::System.Nullable<double> discount, 
+                    global::System.Nullable<int> isPercent, 
+                    global::System.Nullable<int> isReturned, 
                     int Original_transProdId, 
                     global::System.Nullable<int> Original_productId, 
-                    global::System.Nullable<double> Original_discountPercent, 
                     global::System.Nullable<double> Original_originalPrice, 
                     global::System.Nullable<double> Original_discountedPrice, 
                     global::System.Nullable<int> Original_quantity, 
                     global::System.Nullable<int> Original_transactionId, 
                     string Original_CREATE_DATE, 
                     string Original_LAST_UPDATE_DATE, 
+                    global::System.Nullable<double> Original_discount, 
+                    global::System.Nullable<int> Original_isPercent, 
+                    global::System.Nullable<int> Original_isReturned, 
                     int transProdId) {
             if ((productId.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(productId.Value));
@@ -6600,60 +6749,64 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((discountPercent.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(discountPercent.Value));
+            if ((originalPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(originalPrice.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((originalPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(originalPrice.Value));
+            if ((discountedPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(discountedPrice.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((discountedPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(discountedPrice.Value));
+            if ((quantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(quantity.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((quantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(quantity.Value));
+            if ((transactionId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(transactionId.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((transactionId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(transactionId.Value));
-            }
-            else {
+            if ((CREATE_DATE == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((CREATE_DATE == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(CREATE_DATE));
+            }
+            if ((LAST_UPDATE_DATE == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(CREATE_DATE));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(LAST_UPDATE_DATE));
             }
-            if ((LAST_UPDATE_DATE == null)) {
+            if ((discount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(discount.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(LAST_UPDATE_DATE));
+            if ((isPercent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(isPercent.Value));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_transProdId));
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((isReturned.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(isReturned.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_transProdId));
             if ((Original_productId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_productId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Original_discountPercent.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(Original_discountPercent.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_productId.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
@@ -6707,7 +6860,31 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_LAST_UPDATE_DATE));
             }
-            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(transProdId));
+            if ((Original_discount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((double)(Original_discount.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((Original_isPercent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_isPercent.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((Original_isReturned.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_isReturned.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(transProdId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6730,23 +6907,27 @@ SELECT transProdId, productId, discountPercent, originalPrice, discountedPrice, 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     global::System.Nullable<int> productId, 
-                    global::System.Nullable<double> discountPercent, 
                     global::System.Nullable<double> originalPrice, 
                     global::System.Nullable<double> discountedPrice, 
                     global::System.Nullable<int> quantity, 
                     global::System.Nullable<int> transactionId, 
                     string CREATE_DATE, 
                     string LAST_UPDATE_DATE, 
+                    global::System.Nullable<double> discount, 
+                    global::System.Nullable<int> isPercent, 
+                    global::System.Nullable<int> isReturned, 
                     int Original_transProdId, 
                     global::System.Nullable<int> Original_productId, 
-                    global::System.Nullable<double> Original_discountPercent, 
                     global::System.Nullable<double> Original_originalPrice, 
                     global::System.Nullable<double> Original_discountedPrice, 
                     global::System.Nullable<int> Original_quantity, 
                     global::System.Nullable<int> Original_transactionId, 
                     string Original_CREATE_DATE, 
-                    string Original_LAST_UPDATE_DATE) {
-            return this.Update(productId, discountPercent, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE, Original_transProdId, Original_productId, Original_discountPercent, Original_originalPrice, Original_discountedPrice, Original_quantity, Original_transactionId, Original_CREATE_DATE, Original_LAST_UPDATE_DATE, Original_transProdId);
+                    string Original_LAST_UPDATE_DATE, 
+                    global::System.Nullable<double> Original_discount, 
+                    global::System.Nullable<int> Original_isPercent, 
+                    global::System.Nullable<int> Original_isReturned) {
+            return this.Update(productId, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE, discount, isPercent, isReturned, Original_transProdId, Original_productId, Original_originalPrice, Original_discountedPrice, Original_quantity, Original_transactionId, Original_CREATE_DATE, Original_LAST_UPDATE_DATE, Original_discount, Original_isPercent, Original_isReturned, Original_transProdId);
         }
     }
     
