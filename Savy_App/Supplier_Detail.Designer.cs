@@ -71,6 +71,8 @@
             this.txt_phone.Name = "txt_phone";
             this.txt_phone.Size = new System.Drawing.Size(381, 23);
             this.txt_phone.TabIndex = 5;
+            this.txt_phone.TextChanged += new System.EventHandler(this.txt_phone_TextChanged);
+            this.txt_phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_phone_KeyPress);
             // 
             // txt_address
             // 

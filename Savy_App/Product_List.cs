@@ -176,12 +176,20 @@ namespace Savy_App
                         dt2 = Record.SELECT_STATEMENT("SELECT * FROM Suppliers where supplierId = " + supplierId);
                         lbl_p_supplier.Text = dt2.Rows[0]["supplierName"].ToString();
                     }
+                    else
+                    {
+                        lbl_p_supplier.Text = "";
+                    }
                     if (brandId != 0)
                     {
                         Record = new SQL();
                         dt2 = new DataTable();
                         dt2 = Record.SELECT_STATEMENT("SELECT * FROM Brands where brandId = " + brandId);
                         lbl_p_brand.Text = dt2.Rows[0]["brandName"].ToString();
+                    }
+                    else
+                    {
+                        lbl_p_brand.Text = "";
                     }
                 }
                 else

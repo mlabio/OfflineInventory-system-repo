@@ -46,7 +46,7 @@ namespace Savy_App
             }
             else
             {
-                MessageBox.Show("Empty transaction!");
+                MessageBox.Show("No product selected!");
             }
         }
 

@@ -30,6 +30,16 @@ namespace Savy_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string discount_type_word = "None";
+            if (discount_type == 0)
+            {
+                discount_type_word = "₱";
+            }
+            else if (discount_type == 1)
+            {
+                discount_type_word = "%";
+            }
+
             if (textBox1.Text != "" && txt_qty.Text != "")
             {
                 if (radioButton1.Checked == false && txt_discount.Text != "")
@@ -48,7 +58,7 @@ namespace Savy_App
                     }
                     if (rowIndex == -1)
                     {
-                        dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_qty.Text, discount_type, txt_discount.Text, textBox1.Text);
+                        dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_qty.Text, discount_type_word, txt_discount.Text, textBox1.Text, discount_type);
                     }
                     else
                     {
@@ -72,7 +82,7 @@ namespace Savy_App
                     }
                     if (rowIndex == -1)
                     {
-                        dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_qty.Text, discount_type, 0, textBox1.Text);
+                        dt3.Rows.Add(txt_product.Text, txt_price.Text, txt_stock.Text, txt_qty.Text, discount_type_word, 0, textBox1.Text, discount_type);
                     }
                     else
                     {
@@ -81,8 +91,6 @@ namespace Savy_App
                     clearFields();
 
                 }
-                
-                
                 
             }
             else
@@ -138,9 +146,11 @@ namespace Savy_App
             dt3.Columns.Add("Discount Type");
             dt3.Columns.Add("Discount");
             dt3.Columns.Add("Id");
+            dt3.Columns.Add("discount_type");
             dtg_cart.DataSource = dt3;
-
+            dtg_cart.Columns[2].Visible = false;
             dtg_cart.Columns[6].Visible = false;
+            dtg_cart.Columns[7].Visible = false;
 
             if (dt.Rows.Count > 0)
             {
@@ -255,7 +265,6 @@ namespace Savy_App
                 Record.CUD_STATEMENT(insert_statement);
                 MessageBox.Show("Transaction created successfully!");
 
-                //GET THE inventory_delivery_id of the inventory request
                 string test = "SELECT TOP 1 * from Transactions WHERE isPaid = 0 and isDeleted = 0 ORDER BY CONVERT(DATETIME,CREATE_DATE,20) DESC";
                 dt2 = Record.SELECT_STATEMENT(test);
 
@@ -270,7 +279,7 @@ namespace Savy_App
                     string productPrice = (string)dtg_cart[1, i].Value;
                     string productStock = (string)dtg_cart[2, i].Value;
                     string productQty = (string)dtg_cart[3, i].Value;
-                    string productDiscountType = (string)dtg_cart[4, i].Value;
+                    string productDiscountType = (string)dtg_cart[7, i].Value;
                     string productDiscount = (string)dtg_cart[5, i].Value;
                     string productId = (string)dtg_cart[6, i].Value;
                     float discountedPrice = 0;
@@ -283,7 +292,7 @@ namespace Savy_App
                         }
                         else if (productDiscountType == "1")
                         {
-                            discountedPrice = float.Parse(productQty) * (float.Parse(productPrice) / (float.Parse(productDiscount) / 100));
+                            discountedPrice = float.Parse(productQty) * (float.Parse(productPrice) * ((100 - float.Parse(productDiscount)) / 100));
                         }
                     }
                     else
@@ -293,7 +302,6 @@ namespace Savy_App
 
                     totalAmount = totalAmount + discountedPrice;
 
-                    //SAVING SA DATABASE - creation of inventory delivery items
                     String insert_prod_transaction =
                         "INSERT INTO TransactionProducts(productId, discount, isPercent, originalPrice, discountedPrice, quantity, transactionId, CREATE_DATE, LAST_UPDATE_DATE)"
                         + "VALUES("
@@ -309,7 +317,7 @@ namespace Savy_App
 
                     Record.CUD_STATEMENT(insert_prod_transaction);
                 }
-                //UPDATE inventory_request_item  total_quantity_delivered and item_status = "Delivered"
+
                 String update_trans_statement = "UPDATE Transactions SET totalAmount=" + totalAmount + ",LAST_UPDATE_DATE='" + DateTime.Now.ToShortDateString() + "' WHERE transactionId=" + tran_id + "";
                 Record.CUD_STATEMENT(update_trans_statement);
 
@@ -382,6 +390,38 @@ namespace Savy_App
                 rb_peso.Checked = false;
                 txt_discount.Enabled = true;
                 discount_type = 1;
+            }
+        }
+
+        private void txt_qty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_discount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_discount_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_discount.Text, "  ^ [0-9]"))
+            {
+                txt_discount.Text = "";
+            }
+        }
+
+        private void txt_qty_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_qty.Text, "  ^ [0-9]"))
+            {
+                txt_qty.Text = "";
             }
         }
     }

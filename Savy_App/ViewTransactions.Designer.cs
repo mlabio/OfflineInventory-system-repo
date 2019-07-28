@@ -109,6 +109,7 @@
             this.txt_search.Size = new System.Drawing.Size(158, 23);
             this.txt_search.TabIndex = 452;
             this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
+            this.txt_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_search_KeyPress);
             // 
             // label7
             // 

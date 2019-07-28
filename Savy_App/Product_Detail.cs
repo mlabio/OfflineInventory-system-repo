@@ -58,7 +58,8 @@ namespace Savy_App
             if (dt.Rows.Count == 0)
             {
                 MessageBox.Show("No Suppliers!");
-                this.Close();
+                //this.Close();
+                this.cmb_supplier.Enabled = false;
             }
             else
             {
@@ -110,8 +111,7 @@ namespace Savy_App
                 txt_sku.Text == ""||
                 txt_price.Text == ""||
                 txt_qty.Text == ""||
-                cmb_brand.Text == ""||
-                cmb_supplier.Text == ""
+                cmb_brand.Text == ""
                 )
             {
                 MessageBox.Show("Required fields are not completed.");
@@ -121,8 +121,18 @@ namespace Savy_App
                 Record = new SQL();
                 dt = new DataTable();
                 int status = rb_active.Checked == true ? 1 : 0;
-                dt = getSuppliers(cmb_supplier.Text);
-                int supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
+                int supplierId = 0;
+                if (cmb_supplier.Text != "")
+                {
+                    dt = getSuppliers(cmb_supplier.Text);
+                    supplierId = Convert.ToInt32(dt.Rows[0]["supplierId"].ToString());
+                }
+                else
+                {
+                    dt = getSuppliers(cmb_supplier.Text);
+                    supplierId = 0;
+                }
+                
                 dt = getBrands(cmb_brand.Text);
                 int brandId = Convert.ToInt32(dt.Rows[0]["brandId"].ToString());
 
@@ -139,8 +149,8 @@ namespace Savy_App
                     + txt_price.Text + "',"
                     + Convert.ToInt32(txt_qty.Text) + ","
                         //+ ImageToBase64(product_image.Image,System.Drawing.Imaging.ImageFormat.Png) + ","
-                    + supplierId + ","
-                    + brandId + ",'"
+                    + brandId + ","
+                    + supplierId + ",'"
                     + DateTime.Now.ToShortDateString() + "','"
                     + DateTime.Now.ToShortDateString() + "')";
                 }
@@ -160,7 +170,7 @@ namespace Savy_App
                 }
 
                 Record.CUD_STATEMENT(statement);
-                MessageBox.Show("Supplier Detail saved successfully!");
+                MessageBox.Show("Product Detail saved successfully!");
                 Record.close();
                 clearProductFields();
             }
@@ -197,13 +207,20 @@ namespace Savy_App
             Record = new SQL();
             dt = new DataTable();
             string conn_string = "";
+            if (id == 0)
+            {
+                return "";
+            }
+            else
+            {
+                conn_string = "SELECT * FROM Suppliers" + " WHERE supplierStatus = 1 AND supplierId = " + id + "";
+                dt = Record.SELECT_STATEMENT(conn_string);
 
-            conn_string = "SELECT * FROM Suppliers" + " WHERE supplierStatus = 1 AND supplierId = " + id + "";
-            dt = Record.SELECT_STATEMENT(conn_string);
-
-            dt = Record.SELECT_STATEMENT(conn_string);
-            string supplierName = dt.Rows[0]["supplierName"].ToString();
-            return supplierName;
+                dt = Record.SELECT_STATEMENT(conn_string);
+                string supplierName = dt.Rows[0]["supplierName"].ToString();
+                return supplierName;
+            }
+            
         }
 
         public dynamic getBrands(string text)
@@ -230,6 +247,38 @@ namespace Savy_App
             dt = Record.SELECT_STATEMENT(conn_string);
             string brandName = dt.Rows[0]["brandName"].ToString();
             return brandName;
+        }
+
+        private void txt_price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_qty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_qty_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_qty.Text, "  ^ [0-9]"))
+            {
+                txt_qty.Text = "";
+            }
+        }
+
+        private void txt_price_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_price.Text, "  ^ [0-9]"))
+            {
+                txt_price.Text = "";
+            }
         }
 
         //public string ImageToBase64(Image image, System.Drawing.Imaging.ImageFormat format)

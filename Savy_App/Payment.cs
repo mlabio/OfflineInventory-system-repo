@@ -19,6 +19,7 @@ namespace Savy_App
     {
         SQL Record;
         DataTable dt;
+        int paid = 0;
         public Payment()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Savy_App
 
         private void btn_close_Click(object sender, EventArgs e)
         {
-            if (txt_Id.Text != "")
+            if (txt_Id.Text != "" && paid == 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to cancel your transaction?", "Warning!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -49,7 +50,16 @@ namespace Savy_App
             }
             else
             {
-                this.Close();
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to close this window?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Do nothing
+                    //this.Close();
+                }
             }
             
         }
@@ -107,9 +117,20 @@ namespace Savy_App
                 String update_trans_statement = "UPDATE Transactions SET isPaid=1, LAST_UPDATE_DATE='" + DateTime.Now.ToShortDateString() + "' WHERE transactionId=" + Convert.ToInt32(txt_Id.Text) + "";
                 Record.CUD_STATEMENT(update_trans_statement);
 
-                MessageBox.Show("Payment saved successfully!");
-                Record.close();
+                int temp = (dtg_products.RowCount);
+                for (int i = 0; i < temp; i++)
+                {
+                    string productId = dtg_products[2, i].Value.ToString();
+                    string productQty = dtg_products[7, i].Value.ToString();
 
+                    String update_prod_statement = "UPDATE Products SET productQty = (productQty -" + Convert.ToInt32(productQty) + "),LAST_UPDATE_DATE='" + DateTime.Now.ToShortDateString() + "' WHERE productId=" + Convert.ToInt32(productId) + "";
+                    Record.CUD_STATEMENT(update_prod_statement);
+                }
+
+                MessageBox.Show("Payment saved successfully, Stocks for the following products in this transaction are also updated!");
+                Record.close();
+                paid = 1;
+                txt_payment.Enabled = false;
                 btn_clear.Enabled = false;
                 btn_savetransaction.Enabled = false;
                 showReport();
@@ -123,19 +144,26 @@ namespace Savy_App
 
         private void txt_payment_TextChanged(object sender, EventArgs e)
         {
-            if (txt_totalamount.Text != "")
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_payment.Text, "  ^ [0-9]"))
             {
-                float diff = float.Parse(txt_payment.Text) - float.Parse(txt_totalamount.Text);
-                if (diff < 0)
+                txt_payment.Text = "";
+                txt_change.Text = "0.00";
+            }
+            else
+            {
+                if (txt_totalamount.Text != "" && txt_payment.Text!= "")
                 {
-                    txt_change.Text = "0.00";
-                }
-                else
-                {
-                    txt_change.Text = diff.ToString();
+                    float diff = float.Parse(txt_payment.Text) - float.Parse(txt_totalamount.Text);
+                    if (diff < 0)
+                    {
+                        txt_change.Text = "0.00";
+                    }
+                    else
+                    {
+                        txt_change.Text = diff.ToString();
+                    }
                 }
             }
-            
         }
         public void showReport()
         {
@@ -249,6 +277,14 @@ namespace Savy_App
             txt_totalamount.Text = "";
             txt_payment.Text = "";
             txt_change.Text = "";
+        }
+
+        private void txt_payment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
 
     }

@@ -117,21 +117,20 @@ namespace Savy_App
                 CrTable.ApplyLogOnInfo(crtableLogoninfo);
             }
 
+            ParameterFieldDefinitions crParameterFieldDefinitions;
+            ParameterFieldDefinition crParameterFieldDefinition;
+            ParameterValues crParameterValues = new ParameterValues();
+            ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
-            //ParameterFieldDefinitions crParameterFieldDefinitions;
-            //ParameterFieldDefinition crParameterFieldDefinition;
-            //ParameterValues crParameterValues = new ParameterValues();
-            //ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+            crParameterDiscreteValue.Value = label1.Text;
+            crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["transId"];
+            crParameterValues = crParameterFieldDefinition.CurrentValues;
 
-            //crParameterDiscreteValue.Value = label1.Text;
-            //crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-            //crParameterFieldDefinition = crParameterFieldDefinitions["transId"];
-            //crParameterValues = crParameterFieldDefinition.CurrentValues;
-
-            //crParameterValues.Clear();
-            //crParameterValues.Add(crParameterDiscreteValue);
-            //crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-            //cryRpt.SetDataSource(CrTables);
+            crParameterValues.Clear();
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+            cryRpt.SetDataSource(CrTables);
 
             crv_1.ReportSource = cryRpt;
             crv_1.Refresh();
@@ -156,6 +155,14 @@ namespace Savy_App
                 h.Show();
                 this.Close();
 
+            }
+        }
+
+        private void txt_search_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
 

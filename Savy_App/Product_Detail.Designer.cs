@@ -252,6 +252,8 @@
             this.txt_qty.Name = "txt_qty";
             this.txt_qty.Size = new System.Drawing.Size(381, 23);
             this.txt_qty.TabIndex = 4;
+            this.txt_qty.TextChanged += new System.EventHandler(this.txt_qty_TextChanged);
+            this.txt_qty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_qty_KeyPress);
             // 
             // txt_price
             // 
@@ -262,6 +264,8 @@
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(381, 23);
             this.txt_price.TabIndex = 3;
+            this.txt_price.TextChanged += new System.EventHandler(this.txt_price_TextChanged);
+            this.txt_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_price_KeyPress);
             // 
             // txt_sku
             // 
@@ -299,11 +303,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(43, 216);
+            this.label6.Location = new System.Drawing.Point(48, 217);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 16);
+            this.label6.Size = new System.Drawing.Size(67, 16);
             this.label6.TabIndex = 315;
-            this.label6.Text = "Supplier* :";
+            this.label6.Text = "Supplier :";
             // 
             // label4
             // 

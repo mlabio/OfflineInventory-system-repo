@@ -182,5 +182,22 @@ namespace Savy_App
                 }
             }
         }
+
+
+        private void txt_phone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_phone_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_phone.Text, "  ^ [0-9]"))
+            {
+                txt_phone.Text = "";
+            }
+        }
     }
 }
