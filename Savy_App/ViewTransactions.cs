@@ -12,6 +12,8 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.ReportSource;
 using CrystalDecisions.Web;
 using CrystalDecisions.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Savy_App
 {
@@ -92,7 +94,7 @@ namespace Savy_App
                 showReport();
             }
         }
-        public void showReport()
+        public void showReport2()
         {
             ReportDocument cryRpt = new ReportDocument();
             TableLogOnInfos crtableLogoninfos = new TableLogOnInfos();
@@ -100,13 +102,12 @@ namespace Savy_App
             ConnectionInfo crConnectionInfo = new ConnectionInfo();
             Tables CrTables;
 
-            cryRpt.Load("D:" + "\\" + "OfflineInventory-system-repo" + "\\" + "Savy_App" + "\\" + "Receipt.rpt");
+            cryRpt.Load("D:" + "\\" + "OfflineInventory-system-repo" + "\\" + "Savy_App" + "\\" + "Invoice.rpt");
 
             crConnectionInfo.ServerName = "ASUS-PC" + "\\" + "MSSQL";
             crConnectionInfo.DatabaseName = "SavyPOS_DB";
             crConnectionInfo.UserID = "sa";
             crConnectionInfo.Password = "sql";
-            crConnectionInfo.IntegratedSecurity = true;
             //cryRpt.SetParameterValue("transId", label1.Text);
 
             CrTables = cryRpt.Database.Tables;
@@ -117,25 +118,92 @@ namespace Savy_App
                 CrTable.ApplyLogOnInfo(crtableLogoninfo);
             }
 
-            ParameterFieldDefinitions crParameterFieldDefinitions;
-            ParameterFieldDefinition crParameterFieldDefinition;
-            ParameterValues crParameterValues = new ParameterValues();
-            ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+            //ParameterFieldDefinitions crParameterFieldDefinitions;
+            //ParameterFieldDefinition crParameterFieldDefinition;
+            //ParameterValues crParameterValues = new ParameterValues();
+            //ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
-            crParameterDiscreteValue.Value = label1.Text;
-            crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-            crParameterFieldDefinition = crParameterFieldDefinitions["transId"];
-            crParameterValues = crParameterFieldDefinition.CurrentValues;
+            //crParameterDiscreteValue.Value = label1.Text;
+            //crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+            //crParameterFieldDefinition = crParameterFieldDefinitions["transId"];
+            //crParameterValues = crParameterFieldDefinition.CurrentValues;
 
-            crParameterValues.Clear();
-            crParameterValues.Add(crParameterDiscreteValue);
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-            cryRpt.SetDataSource(CrTables);
+            //crParameterValues.Clear();
+            //crParameterValues.Add(crParameterDiscreteValue);
+            //crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+            //cryRpt.SetDataSource(CrTables);
 
             crv_1.ReportSource = cryRpt;
             crv_1.Refresh();
         }
 
+        public void showReport()
+        {
+            PaymentReceipt r = new PaymentReceipt();
+            Record.con.ConnectionString = ConfigurationManager.ConnectionStrings["Savy_App.Properties.Settings.SavyPOS_DBConnectionString"].ToString();
+            string select_statement = "SELECT " +
+                                    "[productName]," +
+                                    "CASE WHEN isPercent = 1 THEN CONVERT(VARCHAR,[discount])+'%' " +
+                                    "     WHEN isPercent = 0 THEN N'₱ ' + CONVERT(VARCHAR,[discount]) " +
+                                    "     WHEN isPercent = -1 THEN '' " +
+                                    "     END AS discount, " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[originalPrice]) AS originalPrice, " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[discountedPrice]) AS discountedPrice, " +
+                                    "[quantity], " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[totalAmount]) AS totalAmount, " +
+                                    "[isPaid], " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[amountPaid]) AS amountPaid, " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[change]) AS change, " +
+                                    "[CREATE_DATE], " +
+                                    "[paymentId], " +
+                                    "[transactionId] " +
+                                    "FROM [SavyPOS_DB].[dbo].[Invoice] " +
+                                    "WHERE transactionId = " + Convert.ToInt32(label1.Text);
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter adp = new SqlDataAdapter(select_statement, Record.con);
+
+            adp.Fill(ds, "PaymentReceipt");
+            DataTable dt = ds.Tables["PaymentReceipt"];
+
+            r.SetDataSource(ds.Tables["PaymentReceipt"]);
+            crv_1.ReportSource = r;
+            crv_1.Refresh();
+        }
+
+        public void showReport3()
+        {
+            Invoice r = new Invoice();
+            Record.con.ConnectionString = ConfigurationManager.ConnectionStrings["Savy_App.Properties.Settings.SavyPOS_DBConnectionString"].ToString();
+            string select_statement = "SELECT " +
+                                    "[productName]," +
+                                    "CASE WHEN isPercent = 1 THEN CONVERT(VARCHAR,[discount])+'%' " +
+                                    "     WHEN isPercent = 0 THEN N'₱ ' + CONVERT(VARCHAR,[discount]) " +
+                                    "     WHEN isPercent = -1 THEN '' " +
+                                    "     END AS discount, " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[originalPrice]) AS originalPrice, " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[discountedPrice]) AS discountedPrice, " +
+                                    "[quantity], " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[totalAmount]) AS totalAmount, " +
+                                    "[isPaid], " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[amountPaid]) AS amountPaid, " +
+                                    "N'₱ '+ CONVERT(VARCHAR,[change]) AS change, " +
+                                    "[CREATE_DATE], " +
+                                    "[paymentId], " +
+                                    "[transactionId] " +
+                                    "FROM [SavyPOS_DB].[dbo].[Invoice] " +
+                                    "WHERE transactionId = " + Convert.ToInt32(label1.Text);
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter adp = new SqlDataAdapter(select_statement, Record.con);
+
+            adp.Fill(ds, "Invoice");
+            DataTable dt = ds.Tables["Invoice"];
+
+            r.SetDataSource(ds.Tables["Invoice"]);
+            crv_1.ReportSource = r;
+            crv_1.Refresh();
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (label1.Text == "")
@@ -163,6 +231,14 @@ namespace Savy_App
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (label1.Text != "")
+            {
+                showReport3();
             }
         }
 

@@ -42,5 +42,16 @@ namespace Savy_App.Properties {
                 return ((string)(this["SavyPOS_DBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=SQLOLEDB.1;Data Source=ASUS-PC\\MSSQL;Persist Security Info=True;Password" +
+            "=sql;User ID=sa;Initial Catalog=SavyPOS_DB")]
+        public string SQLConnectionString {
+            get {
+                return ((string)(this["SQLConnectionString"]));
+            }
+        }
     }
 }
